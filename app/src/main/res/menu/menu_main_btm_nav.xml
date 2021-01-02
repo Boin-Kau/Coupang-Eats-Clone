@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_main_btm_nav_home"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:checkable="true"
+        android:title="@string/main_btm_nav_home_title" />
+
+    <item
+        android:id="@+id/menu_main_btm_nav_search"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="@string/main_btm_nav_search_title" />
+
+    <item
+        android:id="@+id/menu_main_btm_nav_favorite"
+        android:icon="@drawable/ic_favorite"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:checkable="true"
+        android:title="@string/main_btm_nav_favorite_title" />
+
+    <item
+        android:id="@+id/menu_main_btm_nav_pay_log"
+        android:icon="@drawable/ic_pay_log"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="@string/main_btm_nav_pay_log_title" />
+
+    <item
+        android:id="@+id/menu_main_btm_nav_my_eats"
+        android:icon="@drawable/ic_my_eats"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="@string/main_btm_nav_my_eats_title" />
+</menu>

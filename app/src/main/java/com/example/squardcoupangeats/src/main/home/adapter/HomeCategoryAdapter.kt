@@ -3,30 +3,33 @@ package com.example.squardcoupangeats.src.main.home.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.squardcoupangeats.R
+import com.example.squardcoupangeats.src.main.home.models.CategoryItem
 import kotlinx.android.synthetic.main.list_home_frag_category_recyclerview.view.*
 
-class HomeCategoryAdapter : RecyclerView.Adapter<HomeCategoryAdapter.CustomViewholder>() {
+class HomeCategoryAdapter(val categoryList: ArrayList<CategoryItem>) : RecyclerView.Adapter<HomeCategoryAdapter.CustomViewholder>() {
 
-    // 임시 리스트
-    val itemList = listOf("1인분", "2", "3", "4", "5", "6", "7")
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewholder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeCategoryAdapter.CustomViewholder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.list_home_frag_category_recyclerview, parent, false)
 
         return CustomViewholder(view)
     }
 
-    override fun onBindViewHolder(holder: CustomViewholder, position: Int) {
-        holder.view.list_category_item_text_view.text = itemList[position]
+    override fun onBindViewHolder(holder: HomeCategoryAdapter.CustomViewholder, position: Int) {
+        Glide.with(holder.view.context).load(categoryList[position].imgUrl).circleCrop().into(holder.categoryImage)
+        holder.categoryName.text = categoryList[position].categoryName
     }
 
-    override fun getItemCount(): Int = itemList.size
+    override fun getItemCount(): Int = categoryList.size
 
     class CustomViewholder(val view: View) : RecyclerView.ViewHolder(view) {
-
+        val categoryImage: ImageView = view.list_category_item_image_view
+        val categoryName: TextView = view.list_category_item_text_view
     }
 
 

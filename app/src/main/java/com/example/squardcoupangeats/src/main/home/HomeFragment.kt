@@ -1,5 +1,6 @@
 package com.example.squardcoupangeats.src.main.home
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,18 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.squardcoupangeats.R
+import com.example.squardcoupangeats.config.ApplicationClass
+import com.example.squardcoupangeats.config.ApplicationClass.Companion.categoryImgUrlList
 import com.example.squardcoupangeats.config.BaseFragment
 import com.example.squardcoupangeats.databinding.FragmentHomeBinding
-import com.example.squardcoupangeats.src.main.home.adapter.HomeCategoryAdapter
-import com.example.squardcoupangeats.src.main.home.adapter.HomeFranchiseAdapter
-import com.example.squardcoupangeats.src.main.home.adapter.HomePromotionAdapter
-import com.example.squardcoupangeats.src.main.home.adapter.HomeSortedAdapter
+import com.example.squardcoupangeats.src.main.home.adapter.*
 import com.example.squardcoupangeats.src.main.home.models.ResultStore
 import com.example.squardcoupangeats.src.main.home.models.StoreResponse
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home), HomeFragmentView {
 
-    private val categoryImgUrlList = mutableListOf<String>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -52,6 +51,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
         val newStoreList = result.openStore
         val sortedStoreList = result.sortedStore
 
+        // 임시
+        for(i in 0..10) {
+            ApplicationClass.categoryNameList.add(categoryList[i].categoryName)
+        }
+
+
         // 프로모션 구현 : 뷰페이저
         val promotionAdapter = HomePromotionAdapter(promotionList)
         binding.homeFragPromotionViewPager.adapter = promotionAdapter
@@ -69,6 +74,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
         // Sorted Store 구현 : 세로 리사이클러뷰
         val sortedAdapter = HomeSortedAdapter(sortedStoreList)
         binding.homeFragSortedStoreRecyclerview.adapter = sortedAdapter
+
+        // New Store 구현 : 가로 리사이클러뷰
+        val newStoreAdapter = HomeNewStoreAdapter(newStoreList)
+        binding.homeFragNewStoreRecyclerview.adapter = newStoreAdapter
+        binding.homeFragNewStoreRecyclerview.layoutManager = LinearLayoutManager(activity).also { it.orientation = LinearLayoutManager.HORIZONTAL}
     }
 
     init {
@@ -82,19 +92,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
         categoryImgUrlList.add("https://lh3.googleusercontent.com/proxy/0wqCjEtjlCiaxDE9ih2IxPwlWrgDZjijVR2B5pcY2u9AcfJmWh_sZ-mldvET1YaK2Bc9zYbzDrlLizDvp22xfBiDBH3Jsv3iSh4wd9ScOVo37vPTDJ_4wVKNYOCfoyUdjseOuNnY6i3Wu-qX0j1uOVjWXwGHrqKV5lTmeQ5eTsSCXnKNSv8uKfost8Qos5f94xhbPqcniuGQxDTYnkKUK8GvPf_CKf6fnjuiogk2WBUZgQtNPt-0O2ZvxMOEJoAd4NGSG8hLaXIDNchehSmnALCSON6_L2XK1LrKNA")
         categoryImgUrlList.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQacDnAOM_PAnXy3L_Dwa6F6pzMwP3APctSXg&usqp=CAU")
         categoryImgUrlList.add("https://post-phinf.pstatic.net/MjAxNzA2MTNfMjE1/MDAxNDk3MzIyNjMzOTk2.eEFHHI_6A6XYBlYewiNUah56BAPIqKaLXIktBCnKseIg.rgtHIL_96v2Ok-kJ6mOI9q4vtn9ru4spCOClUyR7RvMg.JPEG/mug_obj_149732263448774583.jpg?type=w1080")
-        categoryImgUrlList.add("https://gurunavi.com/ko/japanfoodie/article/sushi/img/sushi_01.jpg0")
-        categoryImgUrlList.add("")
-        categoryImgUrlList.add("")
-        categoryImgUrlList.add("")
-        categoryImgUrlList.add("")
-        categoryImgUrlList.add("")
-        categoryImgUrlList.add("")
-        categoryImgUrlList.add("")
-        categoryImgUrlList.add("")
-        categoryImgUrlList.add("")
-        categoryImgUrlList.add("")
-        categoryImgUrlList.add("")
-        categoryImgUrlList.add("")
-        categoryImgUrlList.add("")
+        categoryImgUrlList.add("https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F21622F3756405A970C")
+//        categoryImgUrlList.add("")
+//        categoryImgUrlList.add("")
+//        categoryImgUrlList.add("")
+//        categoryImgUrlList.add("")
+//        categoryImgUrlList.add("")
+//        categoryImgUrlList.add("")
+//        categoryImgUrlList.add("")
+//        categoryImgUrlList.add("")
+//        categoryImgUrlList.add("")
+//        categoryImgUrlList.add("")
+//        categoryImgUrlList.add("")
+//        categoryImgUrlList.add("")
+//        categoryImgUrlList.add("")
     }
 }

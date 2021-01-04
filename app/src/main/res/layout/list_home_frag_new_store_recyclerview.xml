@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:gravity="center">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/list_new_store_item_image_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_search"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/list_new_store_item_store_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="store name"
+        android:layout_below="@id/list_new_store_item_image_view"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/list_new_store_item_info_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="info detail"
+        android:textColor="@color/black"
+        android:layout_below="@id/list_new_store_item_store_name"/>
+
+    <TextView
+        android:id="@+id/list_new_store_item_delivery_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="delivery cost"
+        android:textColor="@color/black"
+        android:layout_below="@id/list_new_store_item_info_detail"/>
+
+</RelativeLayout>

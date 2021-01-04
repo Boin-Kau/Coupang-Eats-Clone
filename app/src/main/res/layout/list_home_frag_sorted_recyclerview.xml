@@ -8,8 +8,7 @@
     <ImageView
         android:id="@+id/list_sorted_item_image_view"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/ic_launcher_background"/>
+        android:layout_height="236dp" />
 
     <LinearLayout
         android:id="@+id/list_sorted_item_middle_layout"

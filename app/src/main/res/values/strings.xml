@@ -8,8 +8,11 @@
     <string name="main_btm_nav_pay_log_title">주문내역</string>
     <string name="main_btm_nav_my_eats_title">My 이츠</string>
 
-    <!-- Home -->
+    <!-- Home Frag -->
     <string name="home_tv_franchise_title">인기 프랜차이즈</string>
     <string name="home_tv_sorted_store_title">골라먹는 맛집</string>
     <string name="home_tv_new_store_title">새로 들어왔어요!</string>
+
+    <!-- Search Frag -->
+    <string name="search_et_hint">검색어를 입력하세요.</string>
 </resources>

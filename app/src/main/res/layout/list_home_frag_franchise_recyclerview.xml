@@ -10,7 +10,8 @@
         android:id="@+id/list_franchise_item_image_view"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/ic_search"/>
+        android:src="@drawable/ic_search"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/list_franchise_item_store_name"

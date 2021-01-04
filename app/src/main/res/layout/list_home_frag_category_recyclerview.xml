@@ -3,21 +3,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:gravity="center">
+    android:gravity="center"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp">
 
     <ImageView
         android:id="@+id/list_category_item_image_view"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_search"/>
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_search"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
+        android:layout_marginTop="5dp"
         android:id="@+id/list_category_item_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="category"
         android:layout_below="@id/list_category_item_image_view"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

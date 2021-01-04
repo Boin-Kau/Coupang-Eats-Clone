@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.squardcoupangeats.R
-import com.example.squardcoupangeats.src.main.home.models.FranchiseAndNewStoreItem
+import com.example.squardcoupangeats.src.main.home.models.FranchiseData
 import kotlinx.android.synthetic.main.list_home_frag_franchise_recyclerview.view.*
 
-class HomeFranchiseAdapter(private val franchiseList: ArrayList<FranchiseAndNewStoreItem>) : RecyclerView.Adapter<HomeFranchiseAdapter.CustomViewholder>(){
+class HomeFranchiseAdapter(private val franchiseList: ArrayList<FranchiseData>) : RecyclerView.Adapter<HomeFranchiseAdapter.CustomViewholder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewholder {
         val inflater = LayoutInflater.from(parent.context)

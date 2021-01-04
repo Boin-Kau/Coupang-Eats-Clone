@@ -7,7 +7,7 @@ import androidx.viewpager.widget.PagerAdapter
 import com.example.squardcoupangeats.R
 import kotlinx.android.synthetic.main.list_home_frag_promotion_view_pager.view.*
 
-class HomePromotionAdapter : PagerAdapter() {
+class HomePromotionAdapter() : PagerAdapter() {
 
     // 임시 리스트
     val itemList = listOf("page1", "page2", "page3", "page4", "page5", "page6")

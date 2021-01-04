@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/list_sorted_item_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_launcher_background"/>
+
+    <LinearLayout
+        android:id="@+id/list_sorted_item_middle_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/list_sorted_item_image_view"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/list_sorted_item_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="식당 이름"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/list_sorted_item_delivery_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="배달시간"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/list_sorted_item_info_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="info detail"
+        android:textColor="@color/black"
+        android:layout_below="@id/list_sorted_item_middle_layout"/>
+</RelativeLayout>

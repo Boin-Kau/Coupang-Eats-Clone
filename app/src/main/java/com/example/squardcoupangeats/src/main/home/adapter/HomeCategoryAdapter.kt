@@ -11,13 +11,13 @@ import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.src.main.home.models.CategoryItem
 import kotlinx.android.synthetic.main.list_home_frag_category_recyclerview.view.*
 
-class HomeCategoryAdapter(val categoryList: ArrayList<CategoryItem>) : RecyclerView.Adapter<HomeCategoryAdapter.CustomViewholder>() {
+class HomeCategoryAdapter(private val categoryList: ArrayList<CategoryItem>) : RecyclerView.Adapter<HomeCategoryAdapter.CustomViewholder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeCategoryAdapter.CustomViewholder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.list_home_frag_category_recyclerview, parent, false)
 
-        return CustomViewholder(view)
+        return HomeCategoryAdapter.CustomViewholder(view)
     }
 
     override fun onBindViewHolder(holder: HomeCategoryAdapter.CustomViewholder, position: Int) {

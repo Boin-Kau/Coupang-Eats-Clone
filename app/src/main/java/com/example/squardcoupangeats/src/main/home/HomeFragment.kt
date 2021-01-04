@@ -15,9 +15,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // 프로모션 뷰페이저
         val promotionAdapter = HomePromotionAdapter()
         binding.homeFragPromotionViewPager.adapter = promotionAdapter
 
+        // 카테고리 리사이클러뷰
         val categoryList = arrayListOf(
             CategoryItem("https://instagram.fvno2-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/131528464_865361007672277_8546311804083962608_n.jpg?_nc_ht=instagram.fvno2-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=OB17iFDDP4EAX-VaKfE&tp=1&oh=41b217745f695da1c8b526f72e168fd3&oe=601C0A73", "1인분"),
             CategoryItem("","한식"),
@@ -47,5 +49,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
         val categoryAdapter = HomeCategoryAdapter(categoryList)
         binding.homeFragCategoryRecyclerview.adapter = categoryAdapter
         binding.homeFragCategoryRecyclerview.layoutManager = LinearLayoutManager(activity).also { it.orientation = LinearLayoutManager.HORIZONTAL}
+
+        // 프랜차이즈 리사이클러뷰
+
     }
 }

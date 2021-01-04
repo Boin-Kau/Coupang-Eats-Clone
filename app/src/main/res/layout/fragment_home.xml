@@ -21,17 +21,152 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- ViewPager for promotion -->
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/home_frag_promotion_view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"/>
 
+            <!-- Horizontal RecyclerView for category -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/home_frag_category_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:scrollbars="horizontal"
+                android:scrollbars="none"
                 tools:listitem="@layout/list_home_frag_category_recyclerview" />
+
+            <!-- 구분선 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black"/>
+
+            <!-- 하위 타이틀 : 인기 프랜차이즈 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/home_frag_franchise_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/home_tv_franchise_title"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_arrow_forward"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.95"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Horizontal RecyclerView for popular franchise store -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_frag_franchise_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:scrollbars="none"
+                tools:listitem="@layout/list_home_frag_franchise_recyclerview" />
+
+            <!-- 구분선 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15px"
+                android:background="@color/main_btm_nav_item_unselected_color"/>
+
+            <!-- 하위 타이틀 : 골라먹는 맛집 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/home_frag_sorted_store_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/home_tv_sorted_store_title"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- USE STICKY SCROLLVIEW -->
+            <!-- 구현 예정 -->
+
+            <!-- Vertical RecyclerView for sorted popular store -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_frag_sorted_store_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- 구분선 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15px"
+                android:background="@color/main_btm_nav_item_unselected_color"/>
+
+            <!-- 하위 타이틀 : 새로 들어왔어요! -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/home_frag_new_store_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/home_tv_new_store_title"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_arrow_forward"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.95"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            
+            <!-- Horizontal RecyclerView for new store -->
+            <!-- 구현 예정 -->
+
+            <!-- 구분선 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15px"
+                android:background="@color/main_btm_nav_item_unselected_color"/>
+
+
+            <!-- Vertical RecyclerView for 나머지 식당들 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_frag_rest_of_stores_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+
+
         </LinearLayout>
 
     </ScrollView>

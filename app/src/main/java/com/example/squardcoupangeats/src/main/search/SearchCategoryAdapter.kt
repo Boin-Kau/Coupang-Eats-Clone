@@ -21,7 +21,7 @@ class SearchCategoryAdapter(private val categoryList: MutableList<String>, priva
     }
 
     override fun onBindViewHolder(holder: CustomViewholder, position: Int) {
-        Glide.with(holder.view.context).load(categoryImgUrlList[position]).into(holder.categoryImg)
+        Glide.with(holder.view.context).load(categoryImgUrlList[position]).override(170,110).into(holder.categoryImg)
         holder.categoryName.text = categoryList[position]
     }
 

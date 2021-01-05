@@ -8,7 +8,8 @@
     <ImageView
         android:id="@+id/list_sorted_item_image_view"
         android:layout_width="match_parent"
-        android:layout_height="236dp" />
+        android:layout_height="236dp"
+        android:scaleType="fitXY"/>
 
     <LinearLayout
         android:id="@+id/list_sorted_item_middle_layout"

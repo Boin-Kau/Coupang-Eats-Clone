@@ -8,35 +8,41 @@
 
     <ImageView
         android:id="@+id/list_franchise_item_image_view"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_search"
-        android:layout_centerHorizontal="true"/>
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"/>
 
     <TextView
         android:id="@+id/list_franchise_item_store_name"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="store name"
         android:layout_below="@id/list_franchise_item_image_view"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:ellipsize="end"
+        android:maxLines="1"/>
 
     <TextView
         android:id="@+id/list_franchise_item_info_detail"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="info detail"
         android:textColor="@color/black"
-        android:layout_below="@id/list_franchise_item_store_name"/>
+        android:layout_below="@id/list_franchise_item_store_name"
+        android:ellipsize="end"
+        android:maxLines="1"/>
 
     <TextView
         android:id="@+id/list_franchise_item_delivery_cost"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="delivery cost"
         android:textColor="@color/black"
-        android:layout_below="@id/list_franchise_item_info_detail"/>
+        android:layout_below="@id/list_franchise_item_info_detail"
+        android:ellipsize="end"
+        android:maxLines="1"/>
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.squardcoupangeats.src.main.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
@@ -9,6 +10,7 @@ import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.ApplicationClass
 import com.example.squardcoupangeats.config.BaseFragment
 import com.example.squardcoupangeats.databinding.FragmentHomeBinding
+import com.example.squardcoupangeats.src.main.address.AddressActivity
 import com.example.squardcoupangeats.src.main.home.adapter.*
 import com.example.squardcoupangeats.src.main.home.models.ResultStore
 import com.example.squardcoupangeats.src.main.home.models.StoreResponse
@@ -17,10 +19,16 @@ import java.util.ArrayList
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home), HomeFragmentView {
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         HomeService(this).tryGetStores()
+
+        binding.homeFragChangeToAddressActivity.setOnClickListener {
+            activity!!.startActivity(Intent(activity, AddressActivity::class.java))
+        }
     }
 
     override fun onGetStoreSuccess(response: StoreResponse) {

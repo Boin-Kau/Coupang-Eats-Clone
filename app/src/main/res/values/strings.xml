@@ -29,8 +29,11 @@
     <string name="my_eats_tv_notice">공지사항</string>
     <string name="my_eats_tv_terms">약관 및 개인정보 처리방침</string>
 
-
     <!-- Login -->
     <string name="login_tv_request_title">로그인이 필요합니다.</string>
     <string name="login_tv_request_sub_title">로그인 후 맛있는 음식을 빠르게 즐겨보세요.</string>
+
+    <!-- Address -->
+    <string name="address_tv_set_address_title">배달지 주소 설정</string>
+    <string name="address_et_search_address_hint">도로명, 건물명 또는 지번으로 검색</string>
 </resources>

@@ -10,7 +10,7 @@
 
 
     <color name="main_btm_nav_item_unselected_color">#939eab</color>
-    <color name="line_for_dividing_layout_color">#D8CCCCCC</color>
+    <color name="line_for_dividing_layout_color">#D5D5D5</color>
     <color name="search_frag_search_bar_background_color">#F3F3F3</color>
 
 </resources>

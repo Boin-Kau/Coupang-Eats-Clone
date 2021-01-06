@@ -50,8 +50,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     R.id.menu_main_btm_nav_my_eats -> {
 
                         // 로그인 요청 Dialog
-                        val loginDialog = LoginRequestDialog(this)
-                        loginDialog.showDialog()
+                        LoginRequestDialog(this).show()
 
                         val loginFlag = 0
                         if(loginFlag == 1) {

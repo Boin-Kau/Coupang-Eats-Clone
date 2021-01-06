@@ -8,10 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.squardcoupangeats.R
-import com.example.squardcoupangeats.src.main.home.models.CategoryData
+import com.example.squardcoupangeats.config.ApplicationClass
+import com.example.squardcoupangeats.config.ApplicationClass.Companion.categoryNameList
 import kotlinx.android.synthetic.main.list_search_frag_category_recyclerview.view.*
 
-class SearchCategoryAdapter(private val categoryList: MutableList<String>, private val categoryImgUrlList: MutableList<String>) : RecyclerView.Adapter<SearchCategoryAdapter.CustomViewholder>() {
+class SearchCategoryAdapter() : RecyclerView.Adapter<SearchCategoryAdapter.CustomViewholder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewholder {
         val inflater = LayoutInflater.from(parent.context)
@@ -21,11 +22,11 @@ class SearchCategoryAdapter(private val categoryList: MutableList<String>, priva
     }
 
     override fun onBindViewHolder(holder: CustomViewholder, position: Int) {
-        Glide.with(holder.view.context).load(categoryImgUrlList[position]).override(170,110).into(holder.categoryImg)
-        holder.categoryName.text = categoryList[position]
+        Glide.with(holder.view.context).load(ApplicationClass.categoryImageList[position]).override(170,110).into(holder.categoryImg)
+        holder.categoryName.text = categoryNameList[position]
     }
 
-    override fun getItemCount(): Int = categoryImgUrlList.size
+    override fun getItemCount(): Int = categoryNameList.size
 
     class CustomViewholder(val view: View) : RecyclerView.ViewHolder(view) {
         val categoryImg : ImageView = view.list_search_frag_category_item_image_view

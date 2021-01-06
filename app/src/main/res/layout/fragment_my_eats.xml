@@ -1,18 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Eats"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!-- 유저 정보 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="center_vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/my_eats_frag_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="유저이름"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginStart="20dp"/>
+
+            <TextView
+                android:id="@+id/my_eats_frag_user_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="010-****-****"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_below="@id/my_eats_frag_user_name"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/my_eats_frag_discount_promotion_iv"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/black"/>
+
+        <!-- 배달 주소 관리 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/my_eats_tv_manage_address"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"/>
+
+        </LinearLayout>
+
+        <!-- 즐겨찾기 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/my_eats_tv_favorite"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"/>
+
+        </LinearLayout>
+
+        <!-- 할인쿠폰 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/my_eats_tv_coupon"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"/>
+
+        </LinearLayout>
+
+        <!-- 결제관리 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/my_eats_tv_manage_payment"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"/>
+
+        </LinearLayout>
+
+        <!-- 배달파트너 모집 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/my_eats_tv_delivery_partner"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"/>
+
+        </LinearLayout>
+
+        <!-- 자주 묻는 질문 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/my_eats_tv_question"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"/>
+
+        </LinearLayout>
+
+        <!-- 고객 지원 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/my_eats_tv_help_customer"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"/>
+
+        </LinearLayout>
+
+        <!-- 설정 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/my_eats_tv_setting"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"/>
+
+        </LinearLayout>
+
+        <!-- 공지사항 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/my_eats_tv_notice"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"/>
+
+        </LinearLayout>
+
+        <!-- 약관 및 개인정보 처리방침 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/my_eats_tv_terms"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

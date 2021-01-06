@@ -2,6 +2,7 @@ package com.example.squardcoupangeats.config
 
 import android.app.Application
 import android.content.SharedPreferences
+import com.example.squardcoupangeats.R
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -28,8 +29,15 @@ class ApplicationClass : Application() {
         lateinit var sRetrofit: Retrofit
 
         // 카테고리 이미지 리스트(임시)
-        val categoryImgUrlList = mutableListOf<String>()
         val categoryNameList = mutableListOf<String>()
+        val categoryImageList = arrayListOf(R.drawable.ic_category_img_1, R.drawable.ic_category_img_2,
+                R.drawable.ic_category_img_3, R.drawable.ic_category_img_4, R.drawable.ic_category_img_5,
+                R.drawable.ic_category_img_6, R.drawable.ic_category_img_7, R.drawable.ic_category_img_8,
+                R.drawable.ic_category_img_9, R.drawable.ic_category_img_10, R.drawable.ic_category_img_11,
+                R.drawable.ic_category_img_12, R.drawable.ic_category_img_13, R.drawable.ic_category_img_14,
+                R.drawable.ic_category_img_15, R.drawable.ic_category_img_16, R.drawable.ic_category_img_17,
+                R.drawable.ic_category_img_18, R.drawable.ic_category_img_19, R.drawable.ic_category_img_20,
+                R.drawable.ic_category_img_21, R.drawable.ic_category_img_22, R.drawable.ic_category_img_23, R.drawable.ic_category_img_24)
     }
 
     // 앱이 처음 생성되는 순간, SP를 새로 만들어주고, 레트로핏 인스턴스를 생성합니다.

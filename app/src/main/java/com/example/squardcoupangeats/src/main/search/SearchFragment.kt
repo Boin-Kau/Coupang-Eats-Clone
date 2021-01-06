@@ -18,15 +18,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val categoryAdapter = SearchCategoryAdapter(ApplicationClass.categoryNameList, ApplicationClass.categoryImgUrlList)
+        val categoryAdapter = SearchCategoryAdapter()
         binding.searchFragCategoryRecyclerview.adapter = categoryAdapter
         binding.searchFragCategoryRecyclerview.layoutManager = GridLayoutManager(activity, 2)
     }
-
-
-
-
-
-
 
 }

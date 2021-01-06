@@ -3,6 +3,7 @@ package com.example.squardcoupangeats.config
 import android.app.Application
 import android.content.SharedPreferences
 import com.example.squardcoupangeats.R
+import com.kakao.sdk.common.KakaoSdk
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,6 +17,10 @@ class ApplicationClass : Application() {
 
     // 실 서버 주소
     // val API_URL = "http://api.test.com/"
+
+    // https://coupang-eats.shop 이게 메인이고
+    // https://prod.coupang-eats.shop
+    // https://test.coupang-eats.shop 이게 서브도메인입니다!
 
     // 코틀린의 전역변수 문법
     companion object {
@@ -45,6 +50,9 @@ class ApplicationClass : Application() {
         super.onCreate()
         sSharedPreferences =
             applicationContext.getSharedPreferences("SOFTSQUARED_TEMPLATE_APP", MODE_PRIVATE)
+
+        // 카카오 로그인
+        KakaoSdk.init(this, "e69718bae3a089e5903837af214a344c")
 
         // 레트로핏 인스턴스 생성
         initRetrofitInstance()

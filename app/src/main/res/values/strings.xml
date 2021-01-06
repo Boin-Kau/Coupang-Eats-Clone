@@ -36,4 +36,10 @@
     <!-- Address -->
     <string name="address_tv_set_address_title">배달지 주소 설정</string>
     <string name="address_et_search_address_hint">도로명, 건물명 또는 지번으로 검색</string>
+
+    <!-- Address Frag address list -->
+    <string name="address_gps_button_tv">현재 위치로 주소 찾기</string>
+
+    <!-- Address Frag search result -->
+    <string name="address_search_tip_title_tv">검색 Tip</string>
 </resources>

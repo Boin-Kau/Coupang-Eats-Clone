@@ -50,6 +50,7 @@
                     android:layout_marginStart="7dp"/>
 
                 <EditText
+                    android:id="@+id/address_et_search_address"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

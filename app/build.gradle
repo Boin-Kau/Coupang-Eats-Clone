@@ -72,8 +72,8 @@ dependencies {
     implementation 'com.github.amarjain07:StickyScrollView:1.0.2'
 
     // navigation
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha07'
-    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha07'
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0'
+    implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'
 
     // 카카오 로그인
     implementation "com.kakao.sdk:v2-user:2.2.0"

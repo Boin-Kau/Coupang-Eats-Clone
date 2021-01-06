@@ -12,7 +12,6 @@ import com.example.squardcoupangeats.src.main.payLog.PayLogFragment
 import com.example.squardcoupangeats.src.main.search.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-@Suppress("UNREACHABLE_CODE")
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
     override fun onCreate(savedInstanceState: Bundle?) {

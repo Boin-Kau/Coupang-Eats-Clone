@@ -3,6 +3,8 @@
     package="com.example.squardcoupangeats">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:name=".config.ApplicationClass"
@@ -24,6 +26,7 @@
         </activity>
         <activity android:name=".src.main.MainActivity" />
         <activity android:name=".src.main.address.AddressActivity" />
+        <activity android:name=".src.main.address.NaverMapActivity" />
 
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>
@@ -36,6 +39,10 @@
                     android:scheme="kakaoe69718bae3a089e5903837af214a344c" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="dndqrrt849"/>
 
     </application>
 

@@ -11,18 +11,18 @@ import android.view.Gravity
 import android.view.Window
 import android.view.WindowManager
 import com.example.squardcoupangeats.R
-import com.example.squardcoupangeats.databinding.LoginRequestDialogBinding
+import com.example.squardcoupangeats.databinding.DialogLoginRequestBinding
 import com.kakao.sdk.auth.LoginClient
 
 class LoginRequestDialog(context: Context) : Dialog(context) {
 
     val TAG = "tag"
 
-    private lateinit var binding : LoginRequestDialogBinding
+    private lateinit var binding : DialogLoginRequestBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        binding = LoginRequestDialogBinding.inflate(layoutInflater)
+        binding = DialogLoginRequestBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val params = window!!.attributes

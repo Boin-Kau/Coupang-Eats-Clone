@@ -1,5 +1,6 @@
 package com.example.squardcoupangeats.src.main.address
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.example.squardcoupangeats.R
@@ -12,7 +13,7 @@ class AddressListFragment : BaseFragment<FragmentAddressListBinding>(FragmentAdd
         super.onViewCreated(view, savedInstanceState)
 
         binding.addressSearchUsingGpsBtn.setOnClickListener {
-
+            activity!!.startActivity(Intent(activity, NaverMapActivity::class.java))
         }
     }
 }

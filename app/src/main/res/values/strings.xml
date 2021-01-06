@@ -42,4 +42,7 @@
 
     <!-- Address Frag search result -->
     <string name="address_search_tip_title_tv">검색 Tip</string>
+
+    <!-- Naver Map -->
+    <string name="naver_map_set_address_btn">이 위치로 배달받기</string>
 </resources>

@@ -8,12 +8,14 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.ApplicationClass
+import com.example.squardcoupangeats.config.ApplicationClass.Companion.loginFlag
 import com.example.squardcoupangeats.config.BaseFragment
 import com.example.squardcoupangeats.databinding.FragmentHomeBinding
 import com.example.squardcoupangeats.src.main.address.AddressActivity
 import com.example.squardcoupangeats.src.main.home.adapter.*
 import com.example.squardcoupangeats.src.main.home.models.ResultStore
 import com.example.squardcoupangeats.src.main.home.models.StoreResponse
+import com.example.squardcoupangeats.src.main.login.LoginRequestDialog
 import com.example.squardcoupangeats.src.main.search.SearchFragment
 import java.util.ArrayList
 
@@ -25,7 +27,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
         HomeService(this).tryGetStores()
 
         binding.homeFragChangeToAddressActivity.setOnClickListener {
-            activity!!.startActivity(Intent(activity, AddressActivity::class.java))
+            when(loginFlag) {
+                1 -> activity!!.startActivity(Intent(activity, AddressActivity::class.java))
+                0 -> LoginRequestDialog(activity!!).show()
+            }
         }
     }
 

@@ -33,6 +33,11 @@
     <string name="login_tv_request_title">로그인이 필요합니다.</string>
     <string name="login_tv_request_sub_title">로그인 후 맛있는 음식을 빠르게 즐겨보세요.</string>
 
+    <!-- Naver Login -->
+    <string name="naver_login_client_id">rcTc1xg0lEho9eq9KQ9O</string>
+    <string name="naver_login_client_secret">JFWdI7zZDu</string>
+    <string name="naver_login_client_name">SquardCoupangEats</string>
+
     <!-- Address -->
     <string name="address_tv_set_address_title">배달지 주소 설정</string>
     <string name="address_et_search_address_hint">도로명, 건물명 또는 지번으로 검색</string>

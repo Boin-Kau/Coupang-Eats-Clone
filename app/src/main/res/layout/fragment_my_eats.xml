@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <!-- 유저 정보 -->
@@ -19,17 +19,15 @@
                 android:id="@+id/my_eats_frag_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="유저이름"
-                android:textSize="24sp"
-                android:textStyle="bold"
+                android:layout_marginStart="20dp"
                 android:textColor="@color/black"
-                android:layout_marginStart="20dp"/>
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/my_eats_frag_user_phone_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="010-****-****"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:layout_below="@id/my_eats_frag_user_name"

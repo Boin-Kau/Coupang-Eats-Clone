@@ -43,6 +43,11 @@ class ApplicationClass : Application() {
                 R.drawable.ic_category_img_15, R.drawable.ic_category_img_16, R.drawable.ic_category_img_17,
                 R.drawable.ic_category_img_18, R.drawable.ic_category_img_19, R.drawable.ic_category_img_20,
                 R.drawable.ic_category_img_21, R.drawable.ic_category_img_22, R.drawable.ic_category_img_23, R.drawable.ic_category_img_24)
+
+        // 네이버 지도 Request Code
+        const val LOCATION_PERMISSION_REQUEST_CODE = 1000
+
+        var loginFlag : Int = 0
     }
 
     // 앱이 처음 생성되는 순간, SP를 새로 만들어주고, 레트로핏 인스턴스를 생성합니다.

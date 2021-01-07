@@ -2,7 +2,10 @@ package com.example.squardcoupangeats.src.main
 
 import android.os.Bundle
 import com.example.squardcoupangeats.R
+import com.example.squardcoupangeats.config.ApplicationClass.Companion.loginFlag
+import com.example.squardcoupangeats.config.ApplicationClass.Companion.sSharedPreferences
 import com.example.squardcoupangeats.config.BaseActivity
+import com.example.squardcoupangeats.config.XAccessTokenInterceptor
 import com.example.squardcoupangeats.databinding.ActivityMainBinding
 import com.example.squardcoupangeats.src.main.login.LoginRequestDialog
 import com.example.squardcoupangeats.src.main.favorite.FavoriteFragment
@@ -16,6 +19,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        loginFlag = sSharedPreferences.getInt("save login state", 0)
 
         supportFragmentManager.beginTransaction().replace(R.id.main_frm, HomeFragment()).commitAllowingStateLoss()
 
@@ -41,26 +46,30 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                         return@OnNavigationItemSelectedListener true
                     }
                     R.id.menu_main_btm_nav_pay_log -> {
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_frm, PayLogFragment())
-                            .commitAllowingStateLoss()
-                        return@OnNavigationItemSelectedListener true
+                        when(loginFlag) {
+                            1 -> {
+                                supportFragmentManager.beginTransaction()
+                                        .replace(R.id.main_frm, PayLogFragment())
+                                        .commitAllowingStateLoss()
+                                return@OnNavigationItemSelectedListener true
+                            }
+                            0 -> LoginRequestDialog(this).show()
+                        }
                     }
                     R.id.menu_main_btm_nav_my_eats -> {
-
-                        // 로그인 요청 Dialog
-                        LoginRequestDialog(this).show()
-
-                        val loginFlag = 0
-                        if(loginFlag == 1) {
-                            supportFragmentManager.beginTransaction()
-                                    .replace(R.id.main_frm, MyEatsFragment())
-                                    .commitAllowingStateLoss()
-                            return@OnNavigationItemSelectedListener true
+                        when(loginFlag) {
+                            1 -> {
+                                supportFragmentManager.beginTransaction()
+                                        .replace(R.id.main_frm, MyEatsFragment())
+                                        .commitAllowingStateLoss()
+                                return@OnNavigationItemSelectedListener true
+                            }
+                            0 -> LoginRequestDialog(this).show()
                         }
                     }
                 }
                 false
             })
     }
+
 }

@@ -9,9 +9,10 @@ import retrofit2.http.Query
 
 interface AddressRetrofitInterface {
 
-    @GET("v2/geocode")
-    fun getAddress(@Header("X-NCP-APIGW-API-KEY-ID") clientId: String,
-                   @Header("X-NCP-APIGW-API-KEY") clientSecret: String,
-                   @Query("query") query : String
+    @GET("v2/local/search/keyword.json")
+    fun getAddress(@Header("Authorization") apiKey: String,
+                   @Query("query") query : String,
+                   @Query("page") page : Int,
+                   @Query("size") size : Int
     ) : Call<AddressSearchResponse>
 }

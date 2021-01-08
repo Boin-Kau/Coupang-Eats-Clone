@@ -9,6 +9,7 @@ import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.BaseActivity
 import com.example.squardcoupangeats.databinding.ActivityAddressBinding
 import com.example.squardcoupangeats.src.main.address.list.AddressListFragment
+import com.example.squardcoupangeats.src.main.address.list.AddressSearchTipFragment
 import com.example.squardcoupangeats.src.main.address.models.AddressSearchResponse
 import com.example.squardcoupangeats.src.main.address.result.AddressSearchResultFragment
 
@@ -34,7 +35,7 @@ class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBind
         setSupportActionBar(binding.addressActivityTopToolbar)
 
         binding.addressEtSearchAddress.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.address_frm, AddressSearchResultFragment()).commitAllowingStateLoss()
+            supportFragmentManager.beginTransaction().replace(R.id.address_frm, AddressSearchTipFragment()).commitAllowingStateLoss()
             binding.addressActivityCloseBtn.visibility = View.INVISIBLE
             binding.addressActivityBackBtn.visibility = View.VISIBLE
             inputMethodManager.showSoftInput(binding.addressEtSearchAddress, 0)
@@ -60,11 +61,15 @@ class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBind
 
     private fun searchAddress() {
         val address = binding.addressEtSearchAddress.text.toString()
-        AddressService(this, address).tryGetAddress()
+        AddressService(this).tryGetAddress(address, 1, 15)
     }
 
     override fun onGetAddressSuccess(response: AddressSearchResponse) {
-        Log.d(TAG, "성공 : ${response.address[0].roadAddress}")
+        Log.d(TAG, "성공 : ${response.meta.is_end}")
+
+        val addressList = response.documents
+        supportFragmentManager.beginTransaction().replace(R.id.address_frm, AddressSearchResultFragment(addressList)).commitAllowingStateLoss()
+
     }
 
     override fun onGetAddressFailure(message: String) {

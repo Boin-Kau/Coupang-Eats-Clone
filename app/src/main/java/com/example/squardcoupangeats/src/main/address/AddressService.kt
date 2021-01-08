@@ -1,6 +1,7 @@
 package com.example.squardcoupangeats.src.main.address
 
 import com.example.squardcoupangeats.config.ApplicationClass
+import com.example.squardcoupangeats.config.ApplicationClass.Companion.KAKAO_REST_API_APP_KEY
 import com.example.squardcoupangeats.config.ApplicationClass.Companion.NAVER_API_CLIENT_ID
 import com.example.squardcoupangeats.config.ApplicationClass.Companion.NAVER_API_CLIENT_SECRET
 import com.example.squardcoupangeats.src.main.address.models.AddressSearchResponse
@@ -8,11 +9,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AddressService(val view: AddressActivityView, private val searchQuery: String) {
+class AddressService(val view: AddressActivityView) {
 
-    fun tryGetAddress() {
+    fun tryGetAddress(address : String, page : Int, size : Int) {
         val addressRetrofitInterface = ApplicationClass.naverGeoRetrofit.create(AddressRetrofitInterface::class.java)
-        addressRetrofitInterface.getAddress(NAVER_API_CLIENT_ID, NAVER_API_CLIENT_SECRET, searchQuery).enqueue(object : Callback<AddressSearchResponse>{
+        addressRetrofitInterface.getAddress("KakaoAK "+ KAKAO_REST_API_APP_KEY, address, page, size
+        ).enqueue(object : Callback<AddressSearchResponse>{
             override fun onResponse(call: Call<AddressSearchResponse>, response: Response<AddressSearchResponse>) {
                 view.onGetAddressSuccess(response.body() as AddressSearchResponse)
             }

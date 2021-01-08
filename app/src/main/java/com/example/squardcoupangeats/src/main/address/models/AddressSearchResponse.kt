@@ -3,32 +3,22 @@ package com.example.squardcoupangeats.src.main.address.models
 import com.google.gson.annotations.SerializedName
 
 data class AddressSearchResponse(
-        @SerializedName("status") val status : String,
-        @SerializedName("meta") val meta : ResultCount,
-        @SerializedName("addresses") val address : ArrayList<ResultAddress>,
-        @SerializedName("errorMessage") val errorMessage : String
-)
-
-data class ResultCount(
-        @SerializedName("totalCount") val totalCount : Int,
-        @SerializedName("page") val page : Int,
-        @SerializedName("count") val count : Int
+        @SerializedName("documents") val documents : ArrayList<ResultAddress>,
+        @SerializedName("meta") val meta : ResultMeta
 )
 
 data class ResultAddress(
-        @SerializedName("roadAddress") val roadAddress : String,
-        @SerializedName("jibunAddress") val jibunAddress : String,
-        @SerializedName("englishAddress") val englishAddress : String,
-        @SerializedName("addressElements") val addressElements : ArrayList<ResultAddressElement>,
+        @SerializedName("address_name") val address_name : String,
+        @SerializedName("place_name") val place_name : String,
+        @SerializedName("road_address_name") val road_address_name : String,
         @SerializedName("x") val x : String,
-        @SerializedName("y") val y : String,
-        @SerializedName("distance") val distance : Double
+        @SerializedName("y") val y : String
+
 )
 
-data class ResultAddressElement(
-        @SerializedName("types") val types : ArrayList<String>,
-        @SerializedName("longName") val longName : String,
-        @SerializedName("shortName") val shortName : String,
-        @SerializedName("code") val code : String
+data class ResultMeta(
+        @SerializedName("is_end") val is_end : Boolean,
+        @SerializedName("pageable_count") val pageable_count : Int,
+        @SerializedName("total_count") val total_count : Int
 )
 

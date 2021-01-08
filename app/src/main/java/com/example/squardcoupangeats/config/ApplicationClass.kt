@@ -22,6 +22,9 @@ class ApplicationClass : Application() {
     // https://prod.coupang-eats.shop
     // https://test.coupang-eats.shop 이게 서브도메인입니다!
 
+    // 카카오 키워드로 주소 검색 api URL
+    val KAKAO_BASE_URL = "https://dapi.kakao.com/"
+
     // 코틀린의 전역변수 문법
     companion object {
         // 만들어져있는 SharedPreferences 를 사용해야합니다. 재생성하지 않도록 유념해주세요
@@ -58,6 +61,9 @@ class ApplicationClass : Application() {
         // 네이버 Api
         const val NAVER_API_CLIENT_ID = "dndqrrt849"
         const val NAVER_API_CLIENT_SECRET = "GMfbgoShnSHIk2VoqkWLkvgnehXbOxhAjB7r7oKO"
+
+        // 카카오 키워드로 주소 검색 native key
+        const val KAKAO_REST_API_APP_KEY = "4f2bb9746ab758b7442d9739900da43d"
 
         var loginFlag : Int = 0
 
@@ -97,7 +103,7 @@ class ApplicationClass : Application() {
             .build()
 
         naverGeoRetrofit = Retrofit.Builder()
-                .baseUrl("https://naveropenapi.apigw.ntruss.com/map-geocode/")
+                .baseUrl(KAKAO_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }

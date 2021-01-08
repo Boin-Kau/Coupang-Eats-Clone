@@ -47,7 +47,14 @@ class ApplicationClass : Application() {
         // 네이버 지도 Request Code
         const val LOCATION_PERMISSION_REQUEST_CODE = 1000
 
+        // 네이버 로그인
+        const val OAUTH_CLIENT_ID = "rcTc1xg0lEho9eq9KQ9O"
+        const val OAUTH_CLIENT_SECRET = "JFWdI7zZDu"
+        const val OAUTH_CLIENT_NAME = "SquardCoupangEats"
+
+
         var loginFlag : Int = 0
+
     }
 
     // 앱이 처음 생성되는 순간, SP를 새로 만들어주고, 레트로핏 인스턴스를 생성합니다.

@@ -83,12 +83,5 @@ dependencies {
     implementation "com.google.android.gms:play-services-location:17.1.0"
 
     //네이버 로그인
-    implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6'   // import from jcenter
-
-    // naveridlogin dependencies
-    def android_x_version = "1.0.0"
-    implementation "androidx.appcompat:appcompat:$android_x_version"
-    implementation "androidx.legacy:legacy-support-core-utils:$android_x_version"
-    implementation "androidx.browser:browser:$android_x_version"
-    implementation "androidx.legacy:legacy-support-v4:$android_x_version"
+    implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6'
 }

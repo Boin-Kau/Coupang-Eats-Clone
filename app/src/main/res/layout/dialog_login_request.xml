@@ -38,11 +38,10 @@
             android:src="@drawable/kakao_login_large_wide"
             android:layout_marginTop="15dp"/>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:src="@drawable/naver_login_large_wide"
-            />
+        <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+            android:id="@+id/login_dialog_naver_login_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp" />
 
     </LinearLayout>
 

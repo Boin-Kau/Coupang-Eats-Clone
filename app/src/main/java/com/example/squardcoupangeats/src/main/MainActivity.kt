@@ -1,5 +1,6 @@
 package com.example.squardcoupangeats.src.main
 
+import android.content.Context
 import android.os.Bundle
 import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.ApplicationClass.Companion.loginFlag
@@ -53,7 +54,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                                         .commitAllowingStateLoss()
                                 return@OnNavigationItemSelectedListener true
                             }
-                            0 -> LoginRequestDialog(this).show()
+                            0 -> LoginRequestDialog(this, this).show()
                         }
                     }
                     R.id.menu_main_btm_nav_my_eats -> {
@@ -64,7 +65,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                                         .commitAllowingStateLoss()
                                 return@OnNavigationItemSelectedListener true
                             }
-                            0 -> LoginRequestDialog(this).show()
+                            0 -> LoginRequestDialog(this, this).show()
                         }
                     }
                 }

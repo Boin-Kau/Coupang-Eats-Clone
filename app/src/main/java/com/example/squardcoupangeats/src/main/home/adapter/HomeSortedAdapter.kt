@@ -26,7 +26,7 @@ class HomeSortedAdapter(private val sortedStoreList: ArrayList<SortedStoreData>)
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CustomViewholder, position: Int) {
 
-        //Glide.with(holder.view.context).load(sortedStoreList[position].sortedStoreImgList[0]).into(holder.storeImage)
+        Glide.with(holder.view.context).load(sortedStoreList[position].sortedStoreImgList[0]).into(holder.storeImage)
         holder.storeName.text = sortedStoreList[position].sortedStoreName
         holder.storeInfo.text = sortedStoreList[position].sortedStoreStar.toString() +
                 "(${sortedStoreList[position].sortedStoreReviewCnt})" +

@@ -2,6 +2,7 @@ package com.example.squardcoupangeats.src.main.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.os.Parcelable
 import android.util.Log
 import android.view.View
@@ -11,15 +12,19 @@ import com.example.squardcoupangeats.config.ApplicationClass
 import com.example.squardcoupangeats.config.ApplicationClass.Companion.loginFlag
 import com.example.squardcoupangeats.config.BaseFragment
 import com.example.squardcoupangeats.databinding.FragmentHomeBinding
+import com.example.squardcoupangeats.src.main.MainActivity
 import com.example.squardcoupangeats.src.main.address.AddressActivity
 import com.example.squardcoupangeats.src.main.home.adapter.*
 import com.example.squardcoupangeats.src.main.home.models.ResultStore
 import com.example.squardcoupangeats.src.main.home.models.StoreResponse
 import com.example.squardcoupangeats.src.main.login.LoginRequestDialog
 import com.example.squardcoupangeats.src.main.search.SearchFragment
-import java.util.ArrayList
+import java.util.*
 
+@Suppress("DEPRECATION")
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home), HomeFragmentView {
+
+    private lateinit var timer : Timer
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,7 +34,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
         binding.homeFragChangeToAddressActivity.setOnClickListener {
             when(loginFlag) {
                 1 -> activity!!.startActivity(Intent(activity, AddressActivity::class.java))
-                0 -> LoginRequestDialog(activity!!).show()
+                0 -> LoginRequestDialog(activity!!, activity!!).show()
             }
         }
     }
@@ -62,7 +67,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
 
         // 프로모션 구현 : 뷰페이저
         val promotionAdapter = HomePromotionAdapter(promotionList)
-        binding.homeFragPromotionViewPager.adapter = promotionAdapter
+        binding.homeFragPromotionViewPager.apply {
+            adapter = promotionAdapter
+
+            var currentPage = 0
+            val handler = Handler()
+            val update = Runnable {
+                if(currentPage == 3) {
+                    currentPage = 0
+                }
+                setCurrentItem(currentPage++, true)
+            }
+            timer = Timer()
+            timer.schedule(object : TimerTask(){
+                override fun run() {
+                    handler.post(update)
+                }
+
+            }, 500, 3000)
+        }
+
+
 
         // 카테고리 구현 : 가로 리사이클러뷰
         val categoryAdapter = HomeCategoryAdapter(categoryList)

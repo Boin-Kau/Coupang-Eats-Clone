@@ -12,6 +12,8 @@ class AddressListFragment : BaseFragment<FragmentAddressListBinding>(FragmentAdd
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         binding.addressSearchUsingGpsBtn.setOnClickListener {
             activity!!.startActivity(Intent(activity, NaverMapActivity::class.java))
         }

@@ -1,4 +1,4 @@
-package com.example.squardcoupangeats.src.main.address
+package com.example.squardcoupangeats.src.main.address.result
 
 import android.os.Bundle
 import android.view.View
@@ -10,5 +10,8 @@ class AddressSearchResultFragment : BaseFragment<FragmentAddressSearchResultBind
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
+
+
 }

@@ -33,6 +33,9 @@ class ApplicationClass : Application() {
         // Retrofit 인스턴스, 앱 실행시 한번만 생성하여 사용합니다.
         lateinit var sRetrofit: Retrofit
 
+        //
+        lateinit var naverGeoRetrofit: Retrofit
+
         // 카테고리 이미지 리스트(임시)
         val categoryNameList = mutableListOf<String>()
         val categoryImageList = arrayListOf(R.drawable.ic_category_img_1, R.drawable.ic_category_img_2,
@@ -52,6 +55,9 @@ class ApplicationClass : Application() {
         const val OAUTH_CLIENT_SECRET = "JFWdI7zZDu"
         const val OAUTH_CLIENT_NAME = "SquardCoupangEats"
 
+        // 네이버 Api
+        const val NAVER_API_CLIENT_ID = "dndqrrt849"
+        const val NAVER_API_CLIENT_SECRET = "GMfbgoShnSHIk2VoqkWLkvgnehXbOxhAjB7r7oKO"
 
         var loginFlag : Int = 0
 
@@ -89,6 +95,11 @@ class ApplicationClass : Application() {
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
+        naverGeoRetrofit = Retrofit.Builder()
+                .baseUrl("https://naveropenapi.apigw.ntruss.com/map-geocode/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
     }
 
 }

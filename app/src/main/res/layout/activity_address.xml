@@ -78,7 +78,9 @@
             android:background="@android:color/transparent"
             android:hint="@string/address_et_search_address_hint"
             android:textSize="14sp"
-            android:layout_marginStart="20dp"/>
+            android:layout_marginStart="20dp"
+            android:imeOptions="actionSearch"
+            android:inputType="text" />
 
     </LinearLayout>
 

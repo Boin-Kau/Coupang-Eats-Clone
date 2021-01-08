@@ -1,15 +1,20 @@
 package com.example.squardcoupangeats.src.main.address
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.BaseActivity
 import com.example.squardcoupangeats.databinding.ActivityAddressBinding
-import kotlinx.android.synthetic.main.activity_address.view.*
+import com.example.squardcoupangeats.src.main.address.list.AddressListFragment
+import com.example.squardcoupangeats.src.main.address.models.AddressSearchResponse
+import com.example.squardcoupangeats.src.main.address.result.AddressSearchResultFragment
 
-class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBinding::inflate) {
+class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBinding::inflate), AddressActivityView {
 
+    val TAG = "tag"
     lateinit var inputMethodManager : InputMethodManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +40,14 @@ class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBind
             inputMethodManager.showSoftInput(binding.addressEtSearchAddress, 0)
         }
 
+        binding.addressEtSearchAddress.setOnEditorActionListener { v, actionId, event ->
+            if(actionId == EditorInfo.IME_ACTION_SEARCH) {
+                searchAddress()
+                true
+            }
+            false
+        }
+
         binding.addressActivityBackBtn.setOnClickListener {
             supportFragmentManager.beginTransaction().replace(R.id.address_frm, AddressListFragment()).commitAllowingStateLoss()
             binding.addressActivityCloseBtn.visibility = View.VISIBLE
@@ -44,4 +57,20 @@ class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBind
 
 
     }
+
+    private fun searchAddress() {
+        val address = binding.addressEtSearchAddress.text.toString()
+        AddressService(this, address).tryGetAddress()
+    }
+
+    override fun onGetAddressSuccess(response: AddressSearchResponse) {
+        Log.d(TAG, "성공 : ${response.address[0].roadAddress}")
+    }
+
+    override fun onGetAddressFailure(message: String) {
+        showCustomToast("오류 : $message")
+        Log.d("오류", message)
+    }
+
+
 }

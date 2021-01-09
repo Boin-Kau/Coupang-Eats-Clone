@@ -1,4 +1,4 @@
-package com.example.squardcoupangeats.src.main.address.result
+package com.example.squardcoupangeats.src.main.address.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +10,17 @@ import com.example.squardcoupangeats.src.main.address.models.ResultAddress
 import kotlinx.android.synthetic.main.list_address_search_result_frag_recyclerview.view.*
 
 class AddressSearchResultAdapter(private val addressList : ArrayList<ResultAddress>) : RecyclerView.Adapter<AddressSearchResultAdapter.CustomViewholder>(){
+
+    interface AddressSearchResultItemClick {
+        fun onClick(view: View, position: Int)
+    }
+    var addressSearchResultItemClick : AddressSearchResultItemClick? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewholder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.list_address_search_result_frag_recyclerview, parent, false)
 
-        return AddressSearchResultAdapter.CustomViewholder(view)
+        return CustomViewholder(view)
     }
 
     override fun onBindViewHolder(holder: CustomViewholder, position: Int) {
@@ -26,6 +32,12 @@ class AddressSearchResultAdapter(private val addressList : ArrayList<ResultAddre
         } else {
             holder.addressType.text = "도로명"
             holder.addressDetail.text = addressList[position].road_address_name
+        }
+
+        if(addressSearchResultItemClick != null) {
+            holder.view.setOnClickListener {
+                addressSearchResultItemClick?.onClick(it, position)
+            }
         }
 
     }

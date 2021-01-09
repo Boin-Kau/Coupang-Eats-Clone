@@ -9,6 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import java.util.jar.Manifest
 
 class ApplicationClass : Application() {
 
@@ -52,6 +53,7 @@ class ApplicationClass : Application() {
 
         // 네이버 지도 Request Code
         const val LOCATION_PERMISSION_REQUEST_CODE = 1000
+        val PERMISSIONS = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION)
 
         // 네이버 로그인
         const val OAUTH_CLIENT_ID = "rcTc1xg0lEho9eq9KQ9O"

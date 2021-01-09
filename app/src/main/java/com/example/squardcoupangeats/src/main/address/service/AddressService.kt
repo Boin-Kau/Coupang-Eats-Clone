@@ -1,9 +1,7 @@
-package com.example.squardcoupangeats.src.main.address
+package com.example.squardcoupangeats.src.main.address.service
 
 import com.example.squardcoupangeats.config.ApplicationClass
 import com.example.squardcoupangeats.config.ApplicationClass.Companion.KAKAO_REST_API_APP_KEY
-import com.example.squardcoupangeats.config.ApplicationClass.Companion.NAVER_API_CLIENT_ID
-import com.example.squardcoupangeats.config.ApplicationClass.Companion.NAVER_API_CLIENT_SECRET
 import com.example.squardcoupangeats.src.main.address.models.AddressSearchResponse
 import retrofit2.Call
 import retrofit2.Callback

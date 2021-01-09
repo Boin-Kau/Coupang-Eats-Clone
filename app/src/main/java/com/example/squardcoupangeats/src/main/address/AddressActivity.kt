@@ -8,12 +8,11 @@ import android.view.inputmethod.InputMethodManager
 import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.BaseActivity
 import com.example.squardcoupangeats.databinding.ActivityAddressBinding
-import com.example.squardcoupangeats.src.main.address.list.AddressListFragment
-import com.example.squardcoupangeats.src.main.address.list.AddressSearchTipFragment
 import com.example.squardcoupangeats.src.main.address.models.AddressSearchResponse
-import com.example.squardcoupangeats.src.main.address.result.AddressSearchResultFragment
+import com.example.squardcoupangeats.src.main.address.service.AddressActivityView
+import com.example.squardcoupangeats.src.main.address.service.AddressService
 
-class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBinding::inflate), AddressActivityView {
+class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBinding::inflate), AddressActivityView, AddressClickEventInterface {
 
     val TAG = "tag"
     lateinit var inputMethodManager : InputMethodManager
@@ -68,7 +67,7 @@ class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBind
         Log.d(TAG, "성공 : ${response.meta.is_end}")
 
         val addressList = response.documents
-        supportFragmentManager.beginTransaction().replace(R.id.address_frm, AddressSearchResultFragment(addressList)).commitAllowingStateLoss()
+        supportFragmentManager.beginTransaction().replace(R.id.address_frm, AddressSearchResultFragment(addressList, this)).commitAllowingStateLoss()
 
     }
 
@@ -77,5 +76,9 @@ class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBind
         Log.d("오류", message)
     }
 
+    override fun showAddressDetailFragment(placeName : String, placeType : String, placeAddress : String) {
+        supportFragmentManager.beginTransaction().replace(R.id.address_frm, AddressDetailFragment(placeName, placeType, placeAddress)).commitAllowingStateLoss()
+        binding.addressActivitySearchBarLayout.visibility = View.GONE
+    }
 
 }

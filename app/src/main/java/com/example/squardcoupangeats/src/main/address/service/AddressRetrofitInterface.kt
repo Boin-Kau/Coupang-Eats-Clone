@@ -1,4 +1,4 @@
-package com.example.squardcoupangeats.src.main.address
+package com.example.squardcoupangeats.src.main.address.service
 
 import com.example.squardcoupangeats.src.main.address.models.AddressSearchResponse
 import com.example.squardcoupangeats.src.main.home.models.StoreResponse

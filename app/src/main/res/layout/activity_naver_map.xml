@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -18,17 +18,13 @@
             android:name="com.naver.maps.map.MapFragment" />
 
         <com.naver.maps.map.widget.LocationButtonView
-            android:id="@+id/location"
+            android:id="@+id/navermap_location_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.97"
-            app:layout_constraintHorizontal_bias="0.97"/>
+            android:layout_gravity="end|bottom"
+            android:layout_margin="12dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 
 
 

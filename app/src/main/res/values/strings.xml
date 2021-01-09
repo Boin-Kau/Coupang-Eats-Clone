@@ -46,6 +46,10 @@
     <!-- Address Frag search result -->
     <string name="address_search_tip_title_tv">검색 Tip</string>
 
+    <!-- Address Frag address detail -->
+    <string name="address_detail_et_hint">상세주소(아파트/동/호)</string>
+    <string name="adress_detail_check_location_on_map_btn">지도에서 위치 확인하기</string>
+
     <!-- Naver Map -->
     <string name="naver_map_set_address_btn">이 위치로 배달받기</string>
 </resources>

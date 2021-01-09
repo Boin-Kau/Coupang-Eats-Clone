@@ -22,5 +22,4 @@ class AddressService(val view: AddressActivityView) {
             }
         })
     }
-
 }

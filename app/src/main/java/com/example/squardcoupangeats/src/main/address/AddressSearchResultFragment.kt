@@ -28,8 +28,9 @@ class AddressSearchResultFragment(private val addressList : ArrayList<ResultAddr
                     placeType = "도로명"
                     placeAddress = addressList[position].road_address_name
                 }
-                clickEventInterface.showAddressDetailFragment(placeName, placeType, placeAddress)
-                //activity!!.supportFragmentManager.beginTransaction().replace(R.id.address_frm, AddressDetailFragment()).commitAllowingStateLoss()
+                val lat = addressList[position].x
+                val lon = addressList[position].y
+                clickEventInterface.showAddressDetailFragment(placeName, placeAddress, lat, lon)
             }
 
         }

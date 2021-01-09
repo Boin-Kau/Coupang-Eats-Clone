@@ -76,9 +76,8 @@ class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBind
         Log.d("오류", message)
     }
 
-    override fun showAddressDetailFragment(placeName : String, placeType : String, placeAddress : String) {
-        supportFragmentManager.beginTransaction().replace(R.id.address_frm, AddressDetailFragment(placeName, placeType, placeAddress)).commitAllowingStateLoss()
+    override fun showAddressDetailFragment(placeName : String, placeAddress : String, lat : String, lon : String) {
+        supportFragmentManager.beginTransaction().replace(R.id.address_frm, AddressDetailFragment(placeName, placeAddress, lat, lon)).commitAllowingStateLoss()
         binding.addressActivitySearchBarLayout.visibility = View.GONE
     }
-
 }

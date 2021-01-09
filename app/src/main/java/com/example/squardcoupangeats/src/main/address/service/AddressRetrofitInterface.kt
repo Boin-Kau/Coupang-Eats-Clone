@@ -1,11 +1,11 @@
 package com.example.squardcoupangeats.src.main.address.service
 
 import com.example.squardcoupangeats.src.main.address.models.AddressSearchResponse
+import com.example.squardcoupangeats.src.main.address.models.PatchAddressRequest
+import com.example.squardcoupangeats.src.main.address.models.PatchAddressResponse
 import com.example.squardcoupangeats.src.main.home.models.StoreResponse
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface AddressRetrofitInterface {
 
@@ -15,4 +15,5 @@ interface AddressRetrofitInterface {
                    @Query("page") page : Int,
                    @Query("size") size : Int
     ) : Call<AddressSearchResponse>
+
 }

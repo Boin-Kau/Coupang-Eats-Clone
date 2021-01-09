@@ -56,6 +56,7 @@
             android:background="@color/line_for_dividing_layout_color" />
 
         <EditText
+            android:id="@+id/frag_address_detail_et_for_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/address_detail_et_hint"
@@ -166,6 +167,7 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/frag_address_detail_patch_address"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/app_custom_color"

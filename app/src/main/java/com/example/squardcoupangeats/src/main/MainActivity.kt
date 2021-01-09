@@ -23,14 +23,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         loginFlag = sSharedPreferences.getInt("save login state", 0)
 
-        supportFragmentManager.beginTransaction().replace(R.id.main_frm, HomeFragment()).commitAllowingStateLoss()
+        val placeName : String
+        if(intent.hasExtra("placeName")) {
+            placeName = intent.getStringExtra("placeName").toString()
+        } else {
+            placeName = "배달 주소를 입력하세요."
+        }
+        supportFragmentManager.beginTransaction().replace(R.id.main_frm, HomeFragment(placeName)).commitAllowingStateLoss()
+
+
 
         binding.mainBtmNav.setOnNavigationItemSelectedListener(
             BottomNavigationView.OnNavigationItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.menu_main_btm_nav_home -> {
                         supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_frm, HomeFragment())
+                            .replace(R.id.main_frm, HomeFragment(placeName))
                             .commitAllowingStateLoss()
                         return@OnNavigationItemSelectedListener true
                     }

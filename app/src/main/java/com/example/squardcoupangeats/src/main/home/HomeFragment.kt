@@ -22,7 +22,7 @@ import com.example.squardcoupangeats.src.main.search.SearchFragment
 import java.util.*
 
 @Suppress("DEPRECATION")
-class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home), HomeFragmentView {
+class HomeFragment(val placeName : String) : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home), HomeFragmentView {
 
     private lateinit var timer : Timer
 
@@ -30,6 +30,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
         super.onViewCreated(view, savedInstanceState)
 
         HomeService(this).tryGetStores()
+
+        binding.homeFragAddressTv.text = placeName
 
         binding.homeFragChangeToAddressActivity.setOnClickListener {
             when(loginFlag) {

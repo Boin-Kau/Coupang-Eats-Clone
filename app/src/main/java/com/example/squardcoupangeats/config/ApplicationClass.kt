@@ -3,6 +3,7 @@ package com.example.squardcoupangeats.config
 import android.app.Application
 import android.content.SharedPreferences
 import com.example.squardcoupangeats.R
+import com.example.squardcoupangeats.src.main.address.adapter.SearchedAddressData
 import com.kakao.sdk.common.KakaoSdk
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -67,7 +68,11 @@ class ApplicationClass : Application() {
         // 카카오 키워드로 주소 검색 native key
         const val KAKAO_REST_API_APP_KEY = "4f2bb9746ab758b7442d9739900da43d"
 
+        // 로그인 상태 확인 flag
         var loginFlag : Int = 0
+
+        // 저장한 주소 List
+        var searchedAddressList = mutableListOf<SearchedAddressData>()
 
     }
 

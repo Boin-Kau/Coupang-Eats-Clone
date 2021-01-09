@@ -11,6 +11,7 @@ import com.example.squardcoupangeats.databinding.ActivityNaverMapBinding
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
+import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
 import com.naver.maps.map.widget.LocationButtonView
 import java.util.jar.Manifest
@@ -34,10 +35,28 @@ class NaverMapActivity : BaseActivity<ActivityNaverMapBinding>(ActivityNaverMapB
 
     override fun onMapReady(naverMap: NaverMap) {
         nMap = naverMap
-
-
+        val marker = Marker()
         locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
         nMap.locationSource = locationSource
+        nMap.locationTrackingMode = LocationTrackingMode.Follow
+
+
+
+        naverMap.addOnLocationChangeListener { location ->
+            val cameraPosition = CameraPosition(LatLng(location.latitude, location.longitude), 15.0)
+            nMap.moveCamera(CameraUpdate.toCameraPosition(cameraPosition))
+
+            marker.position = LatLng(location.latitude, location.longitude)
+            marker.icon = OverlayImage.fromResource(R.drawable.ic_marker)
+            marker.width = 150
+            marker.height = 150
+            marker.map = nMap
+        }
+
+//        val locationOverlay = nMap.locationOverlay
+//        locationOverlay.isVisible = true
+//        locationOverlay.position = LatLng(37.364059, 126.500847)
+
         val uiSettings = nMap.uiSettings
         uiSettings.isZoomControlEnabled = false
         uiSettings.isLocationButtonEnabled = true

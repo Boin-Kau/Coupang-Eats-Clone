@@ -3,8 +3,8 @@
     package="com.example.squardcoupangeats">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".config.ApplicationClass"
@@ -16,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SquardCoupangEats">
-
+        <activity
+            android:name=".src.main.store.StoreActivity"
+            android:label="@string/title_activity_store"
+            android:theme="@style/Theme.SquardCoupangEats.NoActionBar"></activity>
         <activity android:name=".src.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,26 +28,27 @@
             </intent-filter>
         </activity>
         <activity android:name=".src.main.MainActivity" />
-        <activity android:name=".src.main.address.AddressActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".src.main.address.AddressActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".src.main.address.NaverMapActivity" />
-
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
-                <data android:host="oauth"
+                <data
+                    android:host="oauth"
                     android:scheme="kakaoe69718bae3a089e5903837af214a344c" />
             </intent-filter>
         </activity>
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="dndqrrt849"/>
-
+            android:value="dndqrrt849" />
     </application>
 
 </manifest>

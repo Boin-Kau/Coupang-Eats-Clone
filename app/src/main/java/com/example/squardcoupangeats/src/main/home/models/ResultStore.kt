@@ -3,11 +3,17 @@ package com.example.squardcoupangeats.src.main.home.models
 import com.google.gson.annotations.SerializedName
 
 data class ResultStore(
+        @SerializedName("address") val address : ArrayList<AddressData>,
         @SerializedName("promotion") val promotion: ArrayList<PromotionData>,
         @SerializedName("category") val category: ArrayList<CategoryData>,
         @SerializedName("franchise") val franchise: ArrayList<FranchiseData>,
         @SerializedName("openStore") val openStore: ArrayList<NewStoreData>,
         @SerializedName("mainStore") val sortedStore: ArrayList<SortedStoreData>
+)
+
+data class AddressData(
+        @SerializedName("userIdx") val userIdx : Int,
+        @SerializedName("addressName") val addressName : String
 )
 
 data class PromotionData(
@@ -38,17 +44,20 @@ data class NewStoreData(
         @SerializedName("deliveryFee") val newStoreDeliveryFee: String,
         @SerializedName("coupon") val newStoreCouponInfo: String,
         @SerializedName("storePhoto") val newStorePhotoUrl: String,
-        @SerializedName("distance") val newStoreDistance: String
+        @SerializedName("distance") val newStoreDistance: String,
+        @SerializedName("storeStar") val newStoreStar : Double,
+        @SerializedName("reviewCount") val newStoreReviewCnt: Int
 )
 
 data class SortedStoreData(
         @SerializedName("storeIdx") val sortedStoreIndex: Int,
         @SerializedName("storeName") val sortedStoreName: String,
+        @SerializedName("isCheetah") val isCheetah : String,
         @SerializedName("storeStar") val sortedStoreStar: Double,
         @SerializedName("reviewCount") val sortedStoreReviewCnt: Int,
         @SerializedName("deliveryFee") val sortedStoreDeliveryFee: String,
         @SerializedName("deliveryTime") val sortedStoreDeliveryTime: String,
         @SerializedName("coupon") val sortedStoreCouponInfo: String,
         @SerializedName("distance") val sortedStoreDistance: String,
-        @SerializedName("img_arr") val sortedStoreImgList: ArrayList<String>
+        @SerializedName("img") val sortedStoreImgList: ArrayList<String>
 )

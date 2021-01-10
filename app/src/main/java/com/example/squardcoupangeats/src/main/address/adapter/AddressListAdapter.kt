@@ -15,6 +15,11 @@ data class SearchedAddressData(
 
 class AddressListAdapter(private val addressList : MutableList<SearchedAddressData>) : RecyclerView.Adapter<AddressListAdapter.CustomViewholder>(){
 
+    interface SearchedAddressListItemClick {
+        fun onItemClick(view: View, position: Int)
+    }
+    var searchedAddressListItemClick : AddressListAdapter.SearchedAddressListItemClick? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewholder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.list_address_list_frag_recyclerview, parent, false)

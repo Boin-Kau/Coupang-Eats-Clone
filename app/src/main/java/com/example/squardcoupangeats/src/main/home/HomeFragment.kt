@@ -19,6 +19,7 @@ import com.example.squardcoupangeats.src.main.home.models.ResultStore
 import com.example.squardcoupangeats.src.main.home.models.StoreResponse
 import com.example.squardcoupangeats.src.main.login.LoginRequestDialog
 import com.example.squardcoupangeats.src.main.search.SearchFragment
+import com.example.squardcoupangeats.src.main.store.StoreActivity
 import java.util.*
 
 @Suppress("DEPRECATION")
@@ -100,6 +101,13 @@ class HomeFragment(val placeName : String) : BaseFragment<FragmentHomeBinding>(F
         val franchiseAdapter = HomeFranchiseAdapter(franchiseList)
         binding.homeFragFranchiseRecyclerview.adapter = franchiseAdapter
         binding.homeFragFranchiseRecyclerview.layoutManager = LinearLayoutManager(activity).also { it.orientation = LinearLayoutManager.HORIZONTAL}
+        franchiseAdapter.franchiseStoreItemClick = object : HomeFranchiseAdapter.FranchiseStoreItemClick {
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(activity, StoreActivity::class.java)
+                intent.putExtra("index", franchiseList[position].franchiseIndex)
+                activity!!.startActivity(intent)
+            }
+        }
 
         // Sorted Store 구현 : 세로 리사이클러뷰
         val sortedAdapter = HomeSortedAdapter(sortedStoreList)

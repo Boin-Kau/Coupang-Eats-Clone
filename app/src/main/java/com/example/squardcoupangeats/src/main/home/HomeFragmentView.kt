@@ -7,8 +7,4 @@ interface HomeFragmentView {
     fun onGetStoreSuccess(response: StoreResponse)
 
     fun onGetStoreFailure(message: String)
-
-
-
-
 }

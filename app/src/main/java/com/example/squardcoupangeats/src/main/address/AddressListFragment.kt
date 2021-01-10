@@ -23,14 +23,13 @@ class AddressListFragment : BaseFragment<FragmentAddressListBinding>(FragmentAdd
         val listAdapter = AddressListAdapter(searchedAddressList)
         binding.addressListFragRecyclerview.adapter = listAdapter
         listAdapter.searchedAddressListItemClick = object : AddressListAdapter.SearchedAddressListItemClick {
-            override fun onItemClick(view: View, position: Int) {
+            override fun onClick(view: View, position: Int) {
                 val placeName = searchedAddressList[position].placeName
                 val intent = Intent(activity, MainActivity::class.java)
                 intent.putExtra("placeName", placeName)
                 startActivity(intent)
                 activity!!.finish()
             }
-
         }
     }
 }

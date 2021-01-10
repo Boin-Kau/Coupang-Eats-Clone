@@ -16,7 +16,7 @@ data class SearchedAddressData(
 class AddressListAdapter(private val addressList : MutableList<SearchedAddressData>) : RecyclerView.Adapter<AddressListAdapter.CustomViewholder>(){
 
     interface SearchedAddressListItemClick {
-        fun onItemClick(view: View, position: Int)
+        fun onClick(view: View, position: Int)
     }
     var searchedAddressListItemClick : AddressListAdapter.SearchedAddressListItemClick? = null
 
@@ -30,6 +30,12 @@ class AddressListAdapter(private val addressList : MutableList<SearchedAddressDa
     override fun onBindViewHolder(holder: CustomViewholder, position: Int) {
         holder.placeName.text = addressList[position].placeName
         holder.placeAddress.text = addressList[position].placeAddress
+
+        if(searchedAddressListItemClick != null) {
+            holder.view.setOnClickListener {
+                searchedAddressListItemClick?.onClick(it, position)
+            }
+        }
     }
 
     override fun getItemCount(): Int = addressList.size

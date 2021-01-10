@@ -9,12 +9,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.squardcoupangeats.R
+import com.example.squardcoupangeats.src.main.address.adapter.AddressListAdapter
 import com.example.squardcoupangeats.src.main.home.models.FranchiseData
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.synthetic.main.list_home_frag_franchise_recyclerview.view.*
 import kotlinx.android.synthetic.main.list_home_frag_promotion_view_pager.view.*
 
 class HomeFranchiseAdapter(private val franchiseList: ArrayList<FranchiseData>) : RecyclerView.Adapter<HomeFranchiseAdapter.CustomViewholder>(){
+
+    interface FranchiseStoreItemClick {
+        fun onClick(view: View, position: Int)
+    }
+    var franchiseStoreItemClick : HomeFranchiseAdapter.FranchiseStoreItemClick? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewholder {
         val inflater = LayoutInflater.from(parent.context)
@@ -32,6 +38,12 @@ class HomeFranchiseAdapter(private val franchiseList: ArrayList<FranchiseData>) 
                 "(${franchiseList[position].franchiseReviewCnt})" +
                 " * ${franchiseList[position].franchiseDistance}"
         holder.storeDeliveryCost.text = franchiseList[position].franchiseDeliveryFee
+
+        if(franchiseStoreItemClick != null) {
+            holder.view.setOnClickListener {
+                franchiseStoreItemClick?.onClick(it, position)
+            }
+        }
     }
 
     override fun getItemCount(): Int = franchiseList.size

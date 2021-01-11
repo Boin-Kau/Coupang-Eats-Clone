@@ -1,6 +1,6 @@
 package com.example.squardcoupangeats.src.main
 
-import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -10,10 +10,9 @@ import com.example.squardcoupangeats.config.ApplicationClass
 import com.example.squardcoupangeats.config.ApplicationClass.Companion.loginFlag
 import com.example.squardcoupangeats.config.ApplicationClass.Companion.sSharedPreferences
 import com.example.squardcoupangeats.config.BaseActivity
-import com.example.squardcoupangeats.config.XAccessTokenInterceptor
 import com.example.squardcoupangeats.databinding.ActivityMainBinding
+import com.example.squardcoupangeats.src.main.favorite.FavoriteActivity
 import com.example.squardcoupangeats.src.main.login.LoginRequestDialog
-import com.example.squardcoupangeats.src.main.favorite.FavoriteFragment
 import com.example.squardcoupangeats.src.main.home.HomeFragment
 import com.example.squardcoupangeats.src.main.myEats.MyEatsFragment
 import com.example.squardcoupangeats.src.main.payLog.PayLogFragment
@@ -63,10 +62,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                         return@OnNavigationItemSelectedListener true
                     }
                     R.id.menu_main_btm_nav_favorite -> {
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_frm, FavoriteFragment())
-                            .commitAllowingStateLoss()
-                        return@OnNavigationItemSelectedListener true
+                        startActivity(Intent(this, FavoriteActivity::class.java))
                     }
                     R.id.menu_main_btm_nav_pay_log -> {
                         when(loginFlag) {

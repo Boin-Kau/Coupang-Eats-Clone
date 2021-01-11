@@ -19,7 +19,7 @@
         <activity
             android:name=".src.main.menu.MenuActivity"
             android:label="@string/title_activity_menu"
-            android:theme="@style/Theme.SquardCoupangEats.NoActionBar"></activity>
+            android:theme="@style/Theme.SquardCoupangEats.NoActionBar"/>
         <activity
             android:name=".src.main.store.StoreActivity"
             android:label="@string/title_activity_store"
@@ -32,6 +32,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".src.main.MainActivity" />
+        <activity android:name=".src.main.favorite.FavoriteActivity"/>
         <activity
             android:name=".src.main.address.AddressActivity"
             android:windowSoftInputMode="adjustPan" />

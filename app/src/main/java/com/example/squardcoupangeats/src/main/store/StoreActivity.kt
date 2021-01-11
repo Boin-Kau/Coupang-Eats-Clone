@@ -87,7 +87,7 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
     }
 
     override fun onGetSpecificStoreSuccess(response: SpecificStoreResponse) {
-        Log.d(TAG, response.message)
+        Log.d(TAG, "Get Specific Store 성공 : ${response.message}")
 
         val imageList = response.storePhoto
         val storeInfo = response.storeInfo

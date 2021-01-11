@@ -1,7 +1,9 @@
 package com.example.squardcoupangeats.src.main
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.ApplicationClass.Companion.loginFlag
 import com.example.squardcoupangeats.config.ApplicationClass.Companion.sSharedPreferences
@@ -20,6 +22,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.window?.apply {
+            this.statusBarColor = Color.WHITE
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
 
         loginFlag = sSharedPreferences.getInt("save login state", 0)
 

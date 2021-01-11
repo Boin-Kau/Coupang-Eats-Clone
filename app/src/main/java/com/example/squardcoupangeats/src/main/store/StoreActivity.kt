@@ -1,32 +1,51 @@
 package com.example.squardcoupangeats.src.main.store
 
+import android.annotation.SuppressLint
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.BaseActivity
 import com.example.squardcoupangeats.databinding.ActivityStoreBinding
+import com.example.squardcoupangeats.src.main.home.adapter.HomePromotionAdapter
+import com.example.squardcoupangeats.src.main.store.adapter.StoreMenuCategoryAdapter
+import com.example.squardcoupangeats.src.main.store.adapter.StoreReviewAdapter
+import com.example.squardcoupangeats.src.main.store.adapter.StoreTopImageAdapter
+import com.example.squardcoupangeats.src.main.store.models.ResultCategoryMenu
+import com.example.squardcoupangeats.src.main.store.models.ResultPhotoReview
+import com.example.squardcoupangeats.src.main.store.models.ResultStoreInfo
 import com.example.squardcoupangeats.src.main.store.models.SpecificStoreResponse
 import com.example.squardcoupangeats.src.main.store.service.StoreActivityView
 import com.example.squardcoupangeats.src.main.store.service.StoreService
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 @Suppress("DEPRECATION")
 class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::inflate), StoreActivityView {
 
     val TAG = "tag"
+    private var index : Int = 0
+    private lateinit var timer : Timer
+    private var tabCategoryList = mutableListOf<String>()
 
+
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val index : Int
         if(intent.hasExtra("index")) {
             index = intent.getIntExtra("index", 0)
             StoreService(this).tryGetSpecificStores(index)
@@ -70,13 +89,106 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
     }
 
     override fun onGetSpecificStoreSuccess(response: SpecificStoreResponse) {
-        showCustomToast("Specific Store 성공 : $response.message")
         Log.d(TAG, response.message)
 
+        val imageList = response.storePhoto
+        val storeInfo = response.storeInfo
+        val photoReview = response.photoReview
+        val categoryMenu = response.categoryMenu
+        setTogImageAdapter(imageList)
+        setStoreInfo(storeInfo)
+        setPhotoReview(photoReview)
+        setMenu(categoryMenu)
     }
 
     override fun onGetSpecificStoreFailure(message: String) {
         showCustomToast("오류 : $message")
         Log.d("오류", message)
+    }
+
+    private fun setTogImageAdapter(imageList: ArrayList<String>) {
+        val storeTopImageAdapter = StoreTopImageAdapter(imageList)
+        binding.storeActivityTopBarViewPager.apply {
+            adapter = storeTopImageAdapter
+            var currentPage = 0
+            val handler = Handler()
+            val update = Runnable {
+                if(currentPage == 3) {
+                    currentPage = 0
+                }
+                setCurrentItem(currentPage++, true)
+            }
+            timer = Timer()
+            timer.schedule(object : TimerTask(){
+                override fun run() {
+                    handler.post(update)
+                }
+
+            }, 500, 3000)
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setStoreInfo(storeInfo: ArrayList<ResultStoreInfo>) {
+        binding.storeActivityPlaceName.text = storeInfo[0].storeName
+        binding.storeActivityDeliveryTimeTv.text = storeInfo[0].deliveryTime
+        binding.storeActivityDeliveryFeeTv.text = storeInfo[0].deliveryTime
+        binding.storeActivityMinimumOfDeliveryPay.text = storeInfo[0].minOrderCost
+
+        if(storeInfo[0].reviewCount == 0) {
+            binding.storeActivityRatingAndReviewLayout.visibility = View.GONE
+        } else {
+            binding.storeActivityStarCount.text = storeInfo[0].storeStar.toString()
+            binding.storeActivityReviewCountTv.text = "리뷰 " + storeInfo[0].reviewCount.toString() + "개"
+        }
+    }
+
+    private fun setPhotoReview(photoReview: ArrayList<ResultPhotoReview>) {
+        if(photoReview.size != 0) {
+            val storeReviewAdapter = StoreReviewAdapter(photoReview)
+            binding.storeActivityReviewRecyclerview.adapter = storeReviewAdapter
+            binding.storeActivityReviewRecyclerview.layoutManager = LinearLayoutManager(this).also { it.orientation = LinearLayoutManager.HORIZONTAL}
+        } else {
+            binding.storeActivityReviewRecyclerview.visibility = View.GONE
+        }
+    }
+
+    private fun setMenu(categoryMenu: ArrayList<ResultCategoryMenu>) {
+        val tabLayout = binding.storeActivityContentLayout.storeActivityContentTabLayout
+        val contentLayout = binding.storeActivityContentLayout
+
+        // 탭 Item 추가를 위해 탭 이름
+        for(category in categoryMenu) {
+            tabCategoryList.add(category.categoryName)
+        }
+        // 탭 Item 설정
+        for(tabCategory in tabCategoryList) {
+            tabLayout.addTab(tabLayout.newTab().setText(tabCategory))
+        }
+        if(categoryMenu.size > 0) {
+            contentLayout.storeActivityContentCategoryName1.text = categoryMenu[0].categoryName
+            contentLayout.storeActivityContentCategoryDetail1.text = categoryMenu[0].categoryDetail
+            contentLayout.storeActivityContentCategoryRecyclerview1.adapter = StoreMenuCategoryAdapter(categoryMenu[0].menuList)
+        }
+        if (categoryMenu.size > 1) {
+            contentLayout.storeActivityContentCategoryName2.text = categoryMenu[1].categoryName
+            contentLayout.storeActivityContentCategoryDetail2.text = categoryMenu[1].categoryDetail
+            contentLayout.storeActivityContentCategoryRecyclerview2.adapter = StoreMenuCategoryAdapter(categoryMenu[1].menuList)
+        }
+        if (categoryMenu.size > 2) {
+            contentLayout.storeActivityContentCategoryName3.text = categoryMenu[2].categoryName
+            contentLayout.storeActivityContentCategoryDetail3.text = categoryMenu[2].categoryDetail
+            contentLayout.storeActivityContentCategoryRecyclerview3.adapter = StoreMenuCategoryAdapter(categoryMenu[2].menuList)
+        }
+        if (categoryMenu.size > 3) {
+            contentLayout.storeActivityContentCategoryName4.text = categoryMenu[3].categoryName
+            contentLayout.storeActivityContentCategoryDetail4.text = categoryMenu[3].categoryDetail
+            contentLayout.storeActivityContentCategoryRecyclerview4.adapter = StoreMenuCategoryAdapter(categoryMenu[3].menuList)
+        }
+        if (categoryMenu.size > 4) {
+            contentLayout.storeActivityContentCategoryName5.text = categoryMenu[4].categoryName
+            contentLayout.storeActivityContentCategoryDetail5.text = categoryMenu[4].categoryDetail
+            contentLayout.storeActivityContentCategoryRecyclerview5.adapter = StoreMenuCategoryAdapter(categoryMenu[4].menuList)
+        }
     }
 }

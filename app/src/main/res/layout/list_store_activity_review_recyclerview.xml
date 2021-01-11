@@ -6,12 +6,12 @@
     android:layout_width="300dp"
     android:layout_height="match_parent"
     android:padding="10dp"
-    android:background="@drawable/store_activity_review_recyclerview_item_style">
+    android:background="@drawable/store_activity_review_recyclerview_item_style"
+    android:layout_margin="10dp">
 
     <ImageView
         android:layout_width="60dp"
         android:layout_height="match_parent"
-        android:background="@drawable/ic_category_img_23"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,39 +30,19 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="10dp"/>
 
-    <LinearLayout
-        android:id="@+id/list_review_item_star_layout"
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/list_review_item_rating_bar"
+        android:theme="@style/AppThemeRatingBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:isIndicator="true"
+        android:max="5"
+        android:numStars="5"
+        android:rating="0"
+        android:stepSize="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/list_review_item_iv"
-        android:layout_marginStart="10dp">
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:background="@drawable/ic_yellow_star" />
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:background="@drawable/ic_yellow_star" />
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:background="@drawable/ic_yellow_star" />
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:background="@drawable/ic_yellow_star" />
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:background="@drawable/ic_yellow_star" />
-    </LinearLayout>
-
-
-
-
-
+        android:layout_marginStart="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

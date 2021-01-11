@@ -112,10 +112,26 @@ class HomeFragment(val placeName : String) : BaseFragment<FragmentHomeBinding>(F
         // Sorted Store 구현 : 세로 리사이클러뷰
         val sortedAdapter = HomeSortedAdapter(sortedStoreList)
         binding.homeFragSortedStoreRecyclerview.adapter = sortedAdapter
+        sortedAdapter.sortedStoreItemClick = object : HomeSortedAdapter.SortedStoreItemClick {
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(activity, StoreActivity::class.java)
+                intent.putExtra("index", sortedStoreList[position].sortedStoreIndex)
+                activity!!.startActivity(intent)
+            }
+
+        }
 
         // New Store 구현 : 가로 리사이클러뷰
         val newStoreAdapter = HomeNewStoreAdapter(newStoreList)
         binding.homeFragNewStoreRecyclerview.adapter = newStoreAdapter
         binding.homeFragNewStoreRecyclerview.layoutManager = LinearLayoutManager(activity).also { it.orientation = LinearLayoutManager.HORIZONTAL}
+        newStoreAdapter.newStoreItemClick = object : HomeNewStoreAdapter.NewStoreItemClick {
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(activity, StoreActivity::class.java)
+                intent.putExtra("index", newStoreList[position].newStoreIndex)
+                activity!!.startActivity(intent)
+            }
+
+        }
     }
 }

@@ -15,5 +15,6 @@
     <color name="search_frag_search_bar_background_color">#F3F3F3</color>
     <color name="home_frag_title_arrow_color">#f4c700</color>
 
-
+    <color name="star_color">#f4c700</color>
+    <color name="non_star_color">#b2b2b2</color>
 </resources>

@@ -171,7 +171,7 @@
             <!-- 구분선 -->
             <View
                 android:layout_width="match_parent"
-                android:layout_height="15px"
+                android:layout_height="15dp"
                 android:background="@color/line_for_dividing_layout_color"/>
 
             <!-- 하위 타이틀 : 새로 들어왔어요! -->

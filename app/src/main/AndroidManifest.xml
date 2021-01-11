@@ -17,9 +17,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SquardCoupangEats">
         <activity
+            android:name=".src.main.menu.MenuActivity"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/Theme.SquardCoupangEats.NoActionBar"></activity>
+        <activity
             android:name=".src.main.store.StoreActivity"
             android:label="@string/title_activity_store"
-            android:theme="@style/Theme.SquardCoupangEats.NoActionBar"></activity>
+            android:theme="@style/Theme.SquardCoupangEats.NoActionBar" />
         <activity android:name=".src.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

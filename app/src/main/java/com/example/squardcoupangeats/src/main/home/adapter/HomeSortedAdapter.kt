@@ -15,6 +15,10 @@ import kotlinx.android.synthetic.main.list_home_frag_sorted_recyclerview.view.*
 
 class HomeSortedAdapter(private val sortedStoreList: ArrayList<SortedStoreData>) : RecyclerView.Adapter<HomeSortedAdapter.CustomViewholder>() {
 
+    interface SortedStoreItemClick {
+        fun onClick(view: View, position: Int)
+    }
+    var sortedStoreItemClick : HomeSortedAdapter.SortedStoreItemClick? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewholder {
         val inflater = LayoutInflater.from(parent.context)
@@ -32,6 +36,12 @@ class HomeSortedAdapter(private val sortedStoreList: ArrayList<SortedStoreData>)
                 "(${sortedStoreList[position].sortedStoreReviewCnt})" +
                 " * ${sortedStoreList[position].sortedStoreDistance}"
         holder.deliveryTime.text = sortedStoreList[position].sortedStoreDeliveryTime
+
+        if(sortedStoreItemClick != null) {
+            holder.view.setOnClickListener {
+                sortedStoreItemClick?.onClick(it, position)
+            }
+        }
     }
 
     override fun getItemCount() = sortedStoreList.size

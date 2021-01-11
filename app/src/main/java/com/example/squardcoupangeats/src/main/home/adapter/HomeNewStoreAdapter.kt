@@ -16,6 +16,11 @@ import kotlinx.android.synthetic.main.list_home_frag_new_store_recyclerview.view
 
 class HomeNewStoreAdapter(private val newStoreList: ArrayList<NewStoreData>) : RecyclerView.Adapter<HomeNewStoreAdapter.CustomViewholder>() {
 
+    interface NewStoreItemClick {
+        fun onClick(view: View, position: Int)
+    }
+    var newStoreItemClick : HomeNewStoreAdapter.NewStoreItemClick? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewholder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.list_home_frag_new_store_recyclerview, parent, false)
@@ -29,6 +34,12 @@ class HomeNewStoreAdapter(private val newStoreList: ArrayList<NewStoreData>) : R
         holder.storeName.text = newStoreList[position].newStoreName
         holder.storeInfo.text = newStoreList[position].newStoreDistance
         holder.storeDeliveryCost.text = newStoreList[position].newStoreDeliveryFee
+
+        if(newStoreItemClick != null) {
+            holder.view.setOnClickListener {
+                newStoreItemClick?.onClick(it, position)
+            }
+        }
     }
 
     override fun getItemCount(): Int = newStoreList.size

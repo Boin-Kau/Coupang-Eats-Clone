@@ -8,10 +8,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.squardcoupangeats.R
+import com.example.squardcoupangeats.src.main.home.adapter.HomeSortedAdapter
 import com.example.squardcoupangeats.src.main.store.models.MenuListData
 import kotlinx.android.synthetic.main.list_store_activity_menu_category_recyclerview.view.*
 
 class StoreMenuCategoryAdapter(private val menuList : ArrayList<MenuListData>) : RecyclerView.Adapter<StoreMenuCategoryAdapter.CustomViewholder>() {
+
+    interface MenuCategoryItemClick {
+        fun onClick(view: View, position: Int)
+    }
+    var menuCategoryItemClick : StoreMenuCategoryAdapter.MenuCategoryItemClick? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewholder {
         val inflater = LayoutInflater.from(parent.context)
@@ -33,6 +39,12 @@ class StoreMenuCategoryAdapter(private val menuList : ArrayList<MenuListData>) :
         }
         holder.menuName.text = menuList[position].menuName
         holder.menuPrice.text = menuList[position].menuPrice
+
+        if(menuCategoryItemClick != null) {
+            holder.view.setOnClickListener {
+                menuCategoryItemClick?.onClick(it, position)
+            }
+        }
     }
 
     override fun getItemCount(): Int = menuList.size

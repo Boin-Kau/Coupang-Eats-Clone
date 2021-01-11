@@ -115,7 +115,7 @@ class HomeFragment(val placeName : String) : BaseFragment<FragmentHomeBinding>(F
         sortedAdapter.sortedStoreItemClick = object : HomeSortedAdapter.SortedStoreItemClick {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(activity, StoreActivity::class.java)
-                intent.putExtra("index", sortedStoreList[position].sortedStoreIndex)
+                intent.putExtra("storeIndex", sortedStoreList[position].sortedStoreIndex)
                 activity!!.startActivity(intent)
             }
 

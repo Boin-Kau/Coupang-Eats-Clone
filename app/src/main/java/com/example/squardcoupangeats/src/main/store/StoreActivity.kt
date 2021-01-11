@@ -1,6 +1,7 @@
 package com.example.squardcoupangeats.src.main.store
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -20,13 +21,12 @@ import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.BaseActivity
 import com.example.squardcoupangeats.databinding.ActivityStoreBinding
 import com.example.squardcoupangeats.src.main.home.adapter.HomePromotionAdapter
+import com.example.squardcoupangeats.src.main.home.adapter.HomeSortedAdapter
+import com.example.squardcoupangeats.src.main.menu.MenuActivity
 import com.example.squardcoupangeats.src.main.store.adapter.StoreMenuCategoryAdapter
 import com.example.squardcoupangeats.src.main.store.adapter.StoreReviewAdapter
 import com.example.squardcoupangeats.src.main.store.adapter.StoreTopImageAdapter
-import com.example.squardcoupangeats.src.main.store.models.ResultCategoryMenu
-import com.example.squardcoupangeats.src.main.store.models.ResultPhotoReview
-import com.example.squardcoupangeats.src.main.store.models.ResultStoreInfo
-import com.example.squardcoupangeats.src.main.store.models.SpecificStoreResponse
+import com.example.squardcoupangeats.src.main.store.models.*
 import com.example.squardcoupangeats.src.main.store.service.StoreActivityView
 import com.example.squardcoupangeats.src.main.store.service.StoreService
 import java.util.*
@@ -37,18 +37,17 @@ import kotlin.collections.ArrayList
 class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::inflate), StoreActivityView {
 
     val TAG = "tag"
-    private var index : Int = 0
+    private var storeIndex : Int = 0
     private lateinit var timer : Timer
     private var tabCategoryList = mutableListOf<String>()
-
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(intent.hasExtra("index")) {
-            index = intent.getIntExtra("index", 0)
-            StoreService(this).tryGetSpecificStores(index)
+        if(intent.hasExtra("storeIndex")) {
+            storeIndex = intent.getIntExtra("storeIndex", 0)
+            StoreService(this).tryGetSpecificStores(storeIndex)
         }
 
         this.window?.apply {
@@ -61,7 +60,6 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white)
         supportActionBar!!.title = ""
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -81,7 +79,7 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
                 true
             }
             R.id.menu_store_favorite -> {
-                showCustomToast("favorite")
+                StoreService(this).tryPostFavoriteStore(PostFavoriteStoreRequest(storeIdx = storeIndex))
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -104,6 +102,14 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
     override fun onGetSpecificStoreFailure(message: String) {
         showCustomToast("오류 : $message")
         Log.d("오류", message)
+    }
+
+    override fun onPostFavoriteStoreSuccess(response: FavoriteStoreResponse) {
+        Log.d(TAG, "Post Favorite 성공 : ${response.message}")
+    }
+
+    override fun onPostFavoriteStoreFailure(message: String) {
+        Log.d(TAG, "오류 : $message")
     }
 
     private fun setTogImageAdapter(imageList: ArrayList<String>) {
@@ -168,27 +174,67 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
         if(categoryMenu.size > 0) {
             contentLayout.storeActivityContentCategoryName1.text = categoryMenu[0].categoryName
             contentLayout.storeActivityContentCategoryDetail1.text = categoryMenu[0].categoryDetail
-            contentLayout.storeActivityContentCategoryRecyclerview1.adapter = StoreMenuCategoryAdapter(categoryMenu[0].menuList)
+            val menuCategoryAdapter1 = StoreMenuCategoryAdapter(categoryMenu[0].menuList)
+            contentLayout.storeActivityContentCategoryRecyclerview1.adapter = menuCategoryAdapter1
+            menuCategoryAdapter1.menuCategoryItemClick = object : StoreMenuCategoryAdapter.MenuCategoryItemClick {
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(this@StoreActivity, MenuActivity::class.java)
+                    intent.putExtra("menuIndex", categoryMenu[0].menuList[position].menuIdx)
+                    startActivity(intent)
+                }
+            }
         }
         if (categoryMenu.size > 1) {
             contentLayout.storeActivityContentCategoryName2.text = categoryMenu[1].categoryName
             contentLayout.storeActivityContentCategoryDetail2.text = categoryMenu[1].categoryDetail
-            contentLayout.storeActivityContentCategoryRecyclerview2.adapter = StoreMenuCategoryAdapter(categoryMenu[1].menuList)
+            val menuCategoryAdapter2 = StoreMenuCategoryAdapter(categoryMenu[1].menuList)
+            contentLayout.storeActivityContentCategoryRecyclerview2.adapter = menuCategoryAdapter2
+            menuCategoryAdapter2.menuCategoryItemClick = object : StoreMenuCategoryAdapter.MenuCategoryItemClick {
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(this@StoreActivity, MenuActivity::class.java)
+                    intent.putExtra("menuIndex", categoryMenu[1].menuList[position].menuIdx)
+                    startActivity(intent)
+                }
+            }
         }
         if (categoryMenu.size > 2) {
             contentLayout.storeActivityContentCategoryName3.text = categoryMenu[2].categoryName
             contentLayout.storeActivityContentCategoryDetail3.text = categoryMenu[2].categoryDetail
-            contentLayout.storeActivityContentCategoryRecyclerview3.adapter = StoreMenuCategoryAdapter(categoryMenu[2].menuList)
+            val menuCategoryAdapter3 = StoreMenuCategoryAdapter(categoryMenu[2].menuList)
+            contentLayout.storeActivityContentCategoryRecyclerview3.adapter = menuCategoryAdapter3
+            menuCategoryAdapter3.menuCategoryItemClick = object : StoreMenuCategoryAdapter.MenuCategoryItemClick {
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(this@StoreActivity, MenuActivity::class.java)
+                    intent.putExtra("menuIndex", categoryMenu[2].menuList[position].menuIdx)
+                    startActivity(intent)
+                }
+            }
         }
         if (categoryMenu.size > 3) {
             contentLayout.storeActivityContentCategoryName4.text = categoryMenu[3].categoryName
             contentLayout.storeActivityContentCategoryDetail4.text = categoryMenu[3].categoryDetail
-            contentLayout.storeActivityContentCategoryRecyclerview4.adapter = StoreMenuCategoryAdapter(categoryMenu[3].menuList)
+            val menuCategoryAdapter4 = StoreMenuCategoryAdapter(categoryMenu[3].menuList)
+            contentLayout.storeActivityContentCategoryRecyclerview4.adapter = menuCategoryAdapter4
+            menuCategoryAdapter4.menuCategoryItemClick = object : StoreMenuCategoryAdapter.MenuCategoryItemClick {
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(this@StoreActivity, MenuActivity::class.java)
+                    intent.putExtra("menuIndex", categoryMenu[3].menuList[position].menuIdx)
+                    startActivity(intent)
+                }
+            }
         }
         if (categoryMenu.size > 4) {
             contentLayout.storeActivityContentCategoryName5.text = categoryMenu[4].categoryName
             contentLayout.storeActivityContentCategoryDetail5.text = categoryMenu[4].categoryDetail
-            contentLayout.storeActivityContentCategoryRecyclerview5.adapter = StoreMenuCategoryAdapter(categoryMenu[4].menuList)
+            val menuCategoryAdapter5 = StoreMenuCategoryAdapter(categoryMenu[4].menuList)
+            contentLayout.storeActivityContentCategoryRecyclerview5.adapter = menuCategoryAdapter5
+            menuCategoryAdapter5.menuCategoryItemClick = object : StoreMenuCategoryAdapter.MenuCategoryItemClick {
+                override fun onClick(view: View, position: Int) {
+                    val intent = Intent(this@StoreActivity, MenuActivity::class.java)
+                    intent.putExtra("menuIndex", categoryMenu[4].menuList[position].menuIdx)
+                    startActivity(intent)
+                }
+            }
         }
     }
 }

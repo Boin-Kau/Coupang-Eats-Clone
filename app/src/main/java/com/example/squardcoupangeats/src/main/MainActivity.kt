@@ -3,8 +3,10 @@ package com.example.squardcoupangeats.src.main
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.example.squardcoupangeats.R
+import com.example.squardcoupangeats.config.ApplicationClass
 import com.example.squardcoupangeats.config.ApplicationClass.Companion.loginFlag
 import com.example.squardcoupangeats.config.ApplicationClass.Companion.sSharedPreferences
 import com.example.squardcoupangeats.config.BaseActivity
@@ -20,6 +22,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
+    val TAG = "tag"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.window?.apply {
@@ -28,6 +32,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }
 
         loginFlag = sSharedPreferences.getInt("save login state", 0)
+        val jwtCheck = sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, null)
+        if (jwtCheck != null) {
+            Log.d(TAG, jwtCheck)
+        }
 
         val placeName : String
         if(intent.hasExtra("placeName")) {

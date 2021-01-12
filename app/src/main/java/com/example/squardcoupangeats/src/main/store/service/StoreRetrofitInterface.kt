@@ -15,6 +15,6 @@ interface StoreRetrofitInterface {
     @GET("/stores/{storeIdx}")
     fun getSpecificStore(@Path("storeIdx") storeIdx : Int) : Call<SpecificStoreResponse>
 
-    @POST("/stores/hart")
+    @POST("/stores/heart")
     fun postFavoriteStore(@Body params: PostFavoriteStoreRequest) : Call<FavoriteStoreResponse>
 }

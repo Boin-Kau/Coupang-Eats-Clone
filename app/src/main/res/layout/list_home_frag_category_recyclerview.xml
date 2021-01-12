@@ -17,7 +17,6 @@
         android:id="@+id/list_category_item_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="category"
         android:layout_below="@id/list_category_item_image_view"
         android:textColor="@color/black"
         android:layout_centerHorizontal="true"

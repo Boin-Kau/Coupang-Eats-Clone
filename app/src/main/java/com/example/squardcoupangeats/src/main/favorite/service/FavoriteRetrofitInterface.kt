@@ -7,6 +7,6 @@ import retrofit2.http.GET
 
 interface FavoriteRetrofitInterface {
 
-    @GET("/harts")
+    @GET("/hearts")
     fun getFavoriteStores() : Call<GetFavoriteStoreResponse>
 }

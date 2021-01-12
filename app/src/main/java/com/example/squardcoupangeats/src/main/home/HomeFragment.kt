@@ -76,7 +76,7 @@ class HomeFragment(val placeName : String) : BaseFragment<FragmentHomeBinding>(F
             var currentPage = 0
             val handler = Handler()
             val update = Runnable {
-                if(currentPage == 3) {
+                if(currentPage == promotionList.size) {
                     currentPage = 0
                 }
                 setCurrentItem(currentPage++, true)

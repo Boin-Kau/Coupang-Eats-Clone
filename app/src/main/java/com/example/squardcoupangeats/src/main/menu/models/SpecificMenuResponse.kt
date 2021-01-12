@@ -14,19 +14,22 @@ data class SpecificMenuResponse(
 )
 
 data class ResultMenuInfo(
+    @SerializedName("menuIdx") val menuIdx : Int,
     @SerializedName("menuName") val menuName : String,
     @SerializedName("menuDetail") val menuDetail : String,
-    @SerializedName("menuPrice") val menuPrice : String
+    @SerializedName("menuPrice") val menuPrice : Int
 )
 
 data class ResultOptCategoryMenu(
     @SerializedName("optCategoryIdx") val optCategoryIdx : Int,
     @SerializedName("optCategoryName") val optCategoryName : String,
+    @SerializedName("isMandatory") val isMandatory : String,
+    @SerializedName("maxSelect") val maxSelect : Int,
     @SerializedName("optmenuList") val optMenuList : ArrayList<OptMenuListData>
 )
 
 data class OptMenuListData(
     @SerializedName("menuOptIdx") val menuOptIdx : Int,
     @SerializedName("menuOptName") val menuOptName : String,
-    @SerializedName("menuPrice") val menuPrice : String
+    @SerializedName("optPrice") val optPrice : Int
 )

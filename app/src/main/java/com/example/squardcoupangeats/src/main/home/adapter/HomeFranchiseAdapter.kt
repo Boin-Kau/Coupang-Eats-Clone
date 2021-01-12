@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -31,13 +32,28 @@ class HomeFranchiseAdapter(private val franchiseList: ArrayList<FranchiseData>) 
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CustomViewholder, position: Int) {
-
         Glide.with(holder.view.context).load(franchiseList[position].franchisePhotoUrl).into(holder.storeImg)
         holder.storeName.text = franchiseList[position].franchiseName
-        holder.storeInfo.text = franchiseList[position].franchiseStar.toString() +
-                "(${franchiseList[position].franchiseReviewCnt})" +
-                " * ${franchiseList[position].franchiseDistance}"
-        holder.storeDeliveryCost.text = franchiseList[position].franchiseDeliveryFee
+        holder.storeDistance.text = franchiseList[position].franchiseDistance
+
+        // storeStar이 null && reviewCount가 0면 => Gone
+        if(franchiseList[position].franchiseStar == null || franchiseList[position].franchiseReviewCnt == 0) {
+            holder.storeStarAndReviewLO.visibility = View.GONE
+        } else {
+            holder.storeReview.text = franchiseList[position].franchiseStar.toString() +
+                    "(${franchiseList[position].franchiseReviewCnt})" + " ∙ "
+        }
+        // coupon != null 이면, coupon은 visible, delivery fee는 gone
+        // coupon == null 이면, coupon은 gone, delivery fee는 visible
+        if(franchiseList[position].franchiseCouponInfo != null) {
+            holder.storeCouponLO.visibility = View.VISIBLE
+            holder.storeCoupon.text = franchiseList[position].franchiseCouponInfo
+            holder.storeDeliveryCost.visibility = View.GONE
+        } else {
+            holder.storeCouponLO.visibility = View.GONE
+            holder.storeDeliveryCost.visibility = View.VISIBLE
+            holder.storeDeliveryCost.text = franchiseList[position].franchiseDeliveryFee
+        }
 
         if(franchiseStoreItemClick != null) {
             holder.view.setOnClickListener {
@@ -51,8 +67,11 @@ class HomeFranchiseAdapter(private val franchiseList: ArrayList<FranchiseData>) 
     class CustomViewholder(val view: View) : RecyclerView.ViewHolder(view) {
         val storeImg : ImageView = view.list_franchise_item_image_view
         val storeName : TextView = view.list_franchise_item_store_name
-        val storeInfo : TextView = view.list_franchise_item_info_detail
+        val storeReview : TextView = view.list_franchise_item_star_and_review
         val storeDeliveryCost : TextView = view.list_franchise_item_delivery_cost
+        val storeDistance : TextView = view.list_franchise_item_distance
+        val storeStarAndReviewLO: LinearLayout = view.list_franchise_item_star_and_review_layout
+        val storeCouponLO : LinearLayout = view.list_franchise_item_coupon_layout
+        val storeCoupon : TextView = view.list_franchise_item_coupon_tv
     }
-
 }

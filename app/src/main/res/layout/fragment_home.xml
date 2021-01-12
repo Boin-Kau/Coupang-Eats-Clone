@@ -41,9 +41,11 @@
                     android:layout_marginStart="10dp"/>
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/ic_arrow_down"/>
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/ic_arrow_down_sharp"
+                    android:backgroundTint="@color/app_custom_color"
+                    android:layout_marginStart="5dp"/>
 
             </LinearLayout>
 
@@ -117,11 +119,15 @@
                     android:textStyle="bold"
                     android:layout_weight="1"/>
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/ic_arrow_forward"
+                    android:backgroundTint="@color/black"/>
+
             </LinearLayout>
 
             <!-- Horizontal RecyclerView for popular franchise store -->
-
-            <!-- 구분선 -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/home_frag_franchise_recyclerview"
                 android:layout_width="match_parent"
@@ -145,24 +151,161 @@
                 <TextView
                     android:id="@+id/home_frag_sorted_store_title_tv"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="@string/home_tv_sorted_store_title"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="5dp"/>
 
             </LinearLayout>
 
-            <!-- USE STICKY SCROLLVIEW -->
-            <!-- 구현 예정 -->
+            <!-- 내부 추천 알고리즘을 위한 카테고리바 -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp">
+
+                    <LinearLayout
+                        android:id="@+id/home_frag_sorted_store_option1_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:background="@drawable/sorted_store_category_btn_style">
+
+                        <TextView
+                            android:id="@+id/home_frag_sorted_store_option1_btn_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:text="추천순" />
+
+                        <ImageView
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/ic_arrow_down_sharp"
+                            android:backgroundTint="@color/black"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/home_frag_sorted_store_option2_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:background="@drawable/sorted_store_category_btn_style">
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/ic_cheetah"
+                            android:layout_gravity="center_vertical"
+                            />
+                        <TextView
+                            android:id="@+id/home_frag_sorted_store_option2_btn_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:text="치타배달"
+                            android:layout_marginStart="5dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/home_frag_sorted_store_option3_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:background="@drawable/sorted_store_category_btn_style">
+
+                        <TextView
+                            android:id="@+id/home_frag_sorted_store_option3_btn_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:text="배달비" />
+
+                        <ImageView
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/ic_arrow_down_sharp"
+                            android:backgroundTint="@color/black"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/home_frag_sorted_store_option4_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:background="@drawable/sorted_store_category_btn_style">
+
+                        <TextView
+                            android:id="@+id/home_frag_sorted_store_option4_btn_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:text="최소주문" />
+
+                        <ImageView
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/ic_arrow_down_sharp"
+                            android:backgroundTint="@color/black"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/home_frag_sorted_store_option5_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:background="@drawable/sorted_store_category_btn_style">
+
+                        <TextView
+                            android:id="@+id/home_frag_sorted_store_option5_btn_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:text="할인쿠폰" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
 
             <!-- Vertical RecyclerView for sorted popular store -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/home_frag_sorted_store_recyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:scrollbars="none"
                 tools:listitem="@layout/list_home_frag_sorted_recyclerview"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -171,44 +314,42 @@
             <!-- 구분선 -->
             <View
                 android:layout_width="match_parent"
-                android:layout_height="15dp"
+                android:layout_height="15px"
                 android:background="@color/line_for_dividing_layout_color"/>
 
             <!-- 하위 타이틀 : 새로 들어왔어요! -->
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
 
                 <TextView
                     android:id="@+id/home_frag_new_store_title_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:text="@string/home_tv_new_store_title"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.05"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:layout_weight="1"/>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
                     android:background="@drawable/ic_arrow_forward"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.95"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:backgroundTint="@color/black"/>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
             <!-- Horizontal RecyclerView for new store -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/home_frag_new_store_recyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="220dp"
                 android:scrollbars="none"
                 tools:listitem="@layout/list_home_frag_new_store_recyclerview"
                 android:layout_gravity="center"

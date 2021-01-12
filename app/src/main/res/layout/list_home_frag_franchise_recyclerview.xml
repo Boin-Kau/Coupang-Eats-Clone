@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:padding="10dp"
     android:gravity="center">
 
     <ImageView
@@ -18,7 +18,7 @@
         android:id="@+id/list_franchise_item_store_name"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="store name"
+        android:text="BBQ 안산부곡점"
         android:layout_below="@id/list_franchise_item_image_view"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -26,38 +26,90 @@
         android:ellipsize="end"
         android:maxLines="1"/>
 
-    <ImageView
-        android:id="@+id/list_franchise_item_star"
-        android:layout_width="12dp"
-        android:layout_height="12dp"
-        android:background="@drawable/ic_yellow_star"
-        android:layout_below="@id/list_franchise_item_store_name"
-        android:layout_marginTop="3dp"/>
-
-    <TextView
-        android:layout_toRightOf="@+id/list_franchise_item_star"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="2dp"
-        android:id="@+id/list_franchise_item_info_detail"
+    <LinearLayout
+        android:id="@+id/list_franchise_middle_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="info detail"
-        android:textColor="@color/black"
+        android:orientation="horizontal"
         android:layout_below="@id/list_franchise_item_store_name"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textSize="12sp"/>
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/list_franchise_item_star_and_review_layout"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/list_franchise_item_star_iv"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/ic_yellow_star" />
+
+            <TextView
+                android:layout_marginStart="2dp"
+                android:id="@+id/list_franchise_item_star_and_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5.0(18) ∙ "
+                android:textColor="@color/black"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/list_franchise_item_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.5km"
+            android:textColor="@color/black"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="12sp" />
+    </LinearLayout>
 
     <TextView
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/list_franchise_item_delivery_cost"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="delivery cost"
+        android:text="무료배달"
         android:textColor="@color/black"
-        android:layout_below="@id/list_franchise_item_info_detail"
+        android:layout_below="@id/list_franchise_middle_layout"
         android:ellipsize="end"
         android:maxLines="1"
         android:textSize="12sp"/>
+
+    <LinearLayout
+        android:id="@+id/list_franchise_item_coupon_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/list_franchise_middle_layout"
+        android:background="@drawable/store_activity_get_coupon_btn_style"
+        android:padding="2dp">
+
+        <ImageView
+            android:id="@+id/list_franchise_item_coupon_iv"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/ic_coupon"/>
+
+        <TextView
+            android:id="@+id/list_franchise_item_coupon_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6000원 쿠폰"
+            android:textColor="@color/app_custom_color"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="10sp"
+            android:layout_marginStart="2dp"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

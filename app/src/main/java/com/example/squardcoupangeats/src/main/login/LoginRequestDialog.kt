@@ -80,10 +80,12 @@ class LoginRequestDialog(context: Context, private val activity: Activity) : Dia
             }
         }
 
-        // 네이버 로그인
-        mOAuthLoginModule = OAuthLogin.getInstance()
-        mOAuthLoginModule.init(activity.applicationContext, OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET, OAUTH_CLIENT_NAME)
-        mOAuthLoginModule.startOauthLoginActivity(activity, mOAuthLoginHandler)
+        binding.loginDialogNaverLoginBtn.setOnClickListener {
+            // 네이버 로그인
+            mOAuthLoginModule = OAuthLogin.getInstance()
+            mOAuthLoginModule.init(activity.applicationContext, OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET, OAUTH_CLIENT_NAME)
+            mOAuthLoginModule.startOauthLoginActivity(activity, mOAuthLoginHandler)
+        }
     }
 
     override fun show() {

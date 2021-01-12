@@ -1,5 +1,6 @@
 package com.example.squardcoupangeats.src.main.address
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,6 +13,7 @@ import com.example.squardcoupangeats.src.main.address.models.AddressSearchRespon
 import com.example.squardcoupangeats.src.main.address.service.AddressActivityView
 import com.example.squardcoupangeats.src.main.address.service.AddressService
 
+@Suppress("DEPRECATION")
 class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBinding::inflate), AddressActivityView, AddressClickEventInterface {
 
     val TAG = "tag"
@@ -19,6 +21,11 @@ class AddressActivity : BaseActivity<ActivityAddressBinding>(ActivityAddressBind
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        this.window?.apply {
+            this.statusBarColor = Color.WHITE
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
 
         // 입력받는 방법을 관리하는 Manager객체를  요청하여 InputMethodmanager에 반환한다.
         inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager

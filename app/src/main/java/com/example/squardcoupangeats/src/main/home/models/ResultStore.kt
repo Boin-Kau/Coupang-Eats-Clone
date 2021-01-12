@@ -3,7 +3,7 @@ package com.example.squardcoupangeats.src.main.home.models
 import com.google.gson.annotations.SerializedName
 
 data class ResultStore(
-        @SerializedName("address") val address : ArrayList<AddressData>,
+        @SerializedName("address") val address : String,
         @SerializedName("promotion") val promotion: ArrayList<PromotionData>,
         @SerializedName("category") val category: ArrayList<CategoryData>,
         @SerializedName("franchise") val franchise: ArrayList<FranchiseData>,
@@ -11,13 +11,8 @@ data class ResultStore(
         @SerializedName("mainStore") val sortedStore: ArrayList<SortedStoreData>
 )
 
-data class AddressData(
-        @SerializedName("userIdx") val userIdx : Int,
-        @SerializedName("addressName") val addressName : String
-)
-
 data class PromotionData(
-        @SerializedName("promotionIdx") val promotionIndex: Int,
+        @SerializedName("promotionIdx") val promotionIdx : Int,
         @SerializedName("title") val promotionTitle: String,
         @SerializedName("promotionPhoto") val promotionUrl: String
 )
@@ -29,6 +24,7 @@ data class CategoryData(
 
 data class FranchiseData(
         @SerializedName("storeIdx") val franchiseIndex: Int,
+        @SerializedName("promotionIdx") val promotionIndex: Int,
         @SerializedName("storeName") val franchiseName: String,
         @SerializedName("storeStar") val franchiseStar: Double,
         @SerializedName("reviewCount") val franchiseReviewCnt: Int,

@@ -10,7 +10,7 @@ class HomeService(val view: HomeFragmentView) {
 
     fun tryGetStores() {
         val homeRetrofitInterface = ApplicationClass.sRetrofit.create(HomeRetrofitInterface::class.java)
-        homeRetrofitInterface.getStores().enqueue(object : Callback<StoreResponse> {
+        homeRetrofitInterface.getStores(2, 37.336195, 126.863623, "호수빌그린타운").enqueue(object : Callback<StoreResponse> {
             override fun onResponse(call: Call<StoreResponse>, response: Response<StoreResponse>) {
                 view.onGetStoreSuccess(response.body() as StoreResponse)
             }

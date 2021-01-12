@@ -6,10 +6,16 @@ data class SpecificStoreResponse(
     @SerializedName("storePhoto") val storePhoto : ArrayList<String>,
     @SerializedName("storeInfo") val storeInfo : ArrayList<ResultStoreInfo>,
     @SerializedName("photoReview") val photoReview : ArrayList<ResultPhotoReview>,
+    @SerializedName("couponInfo") val couponInfo : ResultCouponInfo,
     @SerializedName("categoryMenu") val categoryMenu : ArrayList<ResultCategoryMenu>,
     @SerializedName("isSuccess") val isSuccess: Boolean,
     @SerializedName("code") val code: Int,
     @SerializedName("message") val message: String
+)
+
+data class ResultCouponInfo(
+        @SerializedName("couponIdx") val couponIdx : Int,
+        @SerializedName("coupon") val coupon : String
 )
 
 data class ResultStoreInfo(
@@ -18,7 +24,8 @@ data class ResultStoreInfo(
     @SerializedName("deliveryTime") val deliveryTime : String,
     @SerializedName("deliveryFee") val deliveryFee : String,
     @SerializedName("minOrderCost") val minOrderCost : String,
-    @SerializedName("reviewCount") val reviewCount : Int
+    @SerializedName("reviewCount") val reviewCount : Int,
+    @SerializedName("isCheetah") val isCheetah : String
 )
 
 data class ResultPhotoReview(
@@ -40,5 +47,7 @@ data class MenuListData(
     @SerializedName("menuname") val menuName : String,
     @SerializedName("menuDetail") val menuDetail : String,
     @SerializedName("menuPrice") val menuPrice : String,
-    @SerializedName("menuThumbnail") val menuThumbnail : String
+    @SerializedName("menuThumbnail") val menuThumbnail : String,
+    @SerializedName("isBestReview") val isBestReview : String,
+    @SerializedName("isBestOrder") val isBestOrder : String
 )

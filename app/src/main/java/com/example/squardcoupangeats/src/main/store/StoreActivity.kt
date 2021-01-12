@@ -10,18 +10,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.BaseActivity
 import com.example.squardcoupangeats.databinding.ActivityStoreBinding
-import com.example.squardcoupangeats.src.main.home.adapter.HomePromotionAdapter
-import com.example.squardcoupangeats.src.main.home.adapter.HomeSortedAdapter
 import com.example.squardcoupangeats.src.main.menu.MenuActivity
 import com.example.squardcoupangeats.src.main.store.adapter.StoreMenuCategoryAdapter
 import com.example.squardcoupangeats.src.main.store.adapter.StoreReviewAdapter
@@ -64,7 +57,7 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_store, menu)
+        menuInflater.inflate(R.menu.menu_store_activity_tool_bar, menu)
         return true
     }
 
@@ -79,6 +72,7 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
                 true
             }
             R.id.menu_store_favorite -> {
+                showCustomToast("즐겨찾기 등록")
                 StoreService(this).tryPostFavoriteStore(PostFavoriteStoreRequest(storeIdx = storeIndex))
                 true
             }

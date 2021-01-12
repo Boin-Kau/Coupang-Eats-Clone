@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/Theme.SquardCoupangEats.AppBarOverlay">
 
@@ -23,8 +23,14 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/menu_activity_top_bar_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:scaleType="fitXY"/>
+
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/menu_activity_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
@@ -33,6 +39,19 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/activity_menu_content_scrolling" />
+    <include
+        android:id="@+id/menu_activity_content_layout"
+        layout="@layout/activity_menu_content_scrolling" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/menu_activity_add_cart"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"
+        android:background="@drawable/add_cart_btn_style"
+        android:text="카트에 담기"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

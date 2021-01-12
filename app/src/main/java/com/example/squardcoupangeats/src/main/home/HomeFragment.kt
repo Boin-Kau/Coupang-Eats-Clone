@@ -104,7 +104,7 @@ class HomeFragment(val placeName : String) : BaseFragment<FragmentHomeBinding>(F
         franchiseAdapter.franchiseStoreItemClick = object : HomeFranchiseAdapter.FranchiseStoreItemClick {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(activity, StoreActivity::class.java)
-                intent.putExtra("index", franchiseList[position].franchiseIndex)
+                intent.putExtra("storeIndex", franchiseList[position].franchiseIndex)
                 activity!!.startActivity(intent)
             }
         }
@@ -128,7 +128,7 @@ class HomeFragment(val placeName : String) : BaseFragment<FragmentHomeBinding>(F
         newStoreAdapter.newStoreItemClick = object : HomeNewStoreAdapter.NewStoreItemClick {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(activity, StoreActivity::class.java)
-                intent.putExtra("index", newStoreList[position].newStoreIndex)
+                intent.putExtra("storeIndex", newStoreList[position].newStoreIndex)
                 activity!!.startActivity(intent)
             }
 

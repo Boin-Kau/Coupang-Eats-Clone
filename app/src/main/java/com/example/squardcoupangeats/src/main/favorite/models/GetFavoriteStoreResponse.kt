@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName
 
 data class GetFavoriteStoreResponse(
         @SerializedName("hartCount") val hartCount : Int,
-        @SerializedName("hartStore") val hartStore : ArrayList<ResultHardStore>,
+        @SerializedName("hartStore") val hartStore : ArrayList<ResultHartStore>,
         @SerializedName("isSuccess") val isSuccess: Boolean,
         @SerializedName("code") val code: Int,
         @SerializedName("message") val message: String
 )
 
-data class ResultHardStore(
+data class ResultHartStore(
         @SerializedName("storeIdx") val storeIdx : Int,
         @SerializedName("storeName") val storeName : String,
         @SerializedName("storeStar") val storeStar : Double,
@@ -22,4 +22,5 @@ data class ResultHardStore(
         @SerializedName("distance") val distance: String,
         @SerializedName("isCheetah") val isCheetah : String
 )
+
 

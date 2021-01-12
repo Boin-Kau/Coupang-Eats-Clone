@@ -20,7 +20,6 @@ class MenuService(val view: MenuActivityView) {
             override fun onFailure(call: Call<SpecificMenuResponse>, t: Throwable) {
                 view.onGetSpecificMenuFailure(t.message ?: "통신 오류")
             }
-
         })
     }
 }

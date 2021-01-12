@@ -34,7 +34,8 @@ class HomeSortedAdapter(private val sortedStoreList: ArrayList<SortedStoreData>)
         holder.storeName.text = sortedStoreList[position].sortedStoreName
         holder.storeInfo.text = sortedStoreList[position].sortedStoreStar.toString() +
                 "(${sortedStoreList[position].sortedStoreReviewCnt})" +
-                " * ${sortedStoreList[position].sortedStoreDistance}"
+                " * ${sortedStoreList[position].sortedStoreDistance}" +
+                " * ${sortedStoreList[position].sortedStoreDeliveryFee}"
         holder.deliveryTime.text = sortedStoreList[position].sortedStoreDeliveryTime
 
         if(sortedStoreItemClick != null) {

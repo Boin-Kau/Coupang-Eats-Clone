@@ -38,11 +38,22 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/list_sorted_item_star"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:background="@drawable/ic_yellow_star"
+        android:layout_below="@id/list_sorted_item_middle_layout"
+        android:layout_marginTop="5dp"/>
+
     <TextView
+        android:layout_toRightOf="@+id/list_sorted_item_star"
         android:id="@+id/list_sorted_item_info_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="info detail"
         android:textColor="@color/black"
-        android:layout_below="@id/list_sorted_item_middle_layout"/>
+        android:layout_below="@id/list_sorted_item_middle_layout"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="5dp"/>
 </RelativeLayout>

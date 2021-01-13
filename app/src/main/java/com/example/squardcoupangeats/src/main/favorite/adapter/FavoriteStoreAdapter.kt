@@ -14,7 +14,7 @@ import com.example.squardcoupangeats.src.main.store.models.MenuListData
 import kotlinx.android.synthetic.main.list_favorite_activity_recyclerview.view.*
 import kotlinx.android.synthetic.main.list_store_activity_menu_category_recyclerview.view.*
 
-class FavoriteStoreAdapter(private val hartStoreList : ArrayList<ResultHartStore>) : RecyclerView.Adapter<FavoriteStoreAdapter.CustomViewholder>()  {
+class FavoriteStoreAdapter(private val heartStoreList : ArrayList<ResultHartStore>) : RecyclerView.Adapter<FavoriteStoreAdapter.CustomViewholder>()  {
 
     interface FavoriteStoreItemClick {
         fun onClick(view: View, position: Int)
@@ -29,12 +29,12 @@ class FavoriteStoreAdapter(private val hartStoreList : ArrayList<ResultHartStore
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CustomViewholder, position: Int) {
-        Glide.with(holder.view.context).load(hartStoreList[position].storePhoto).into(holder.storeImg)
-        holder.storeName.text = hartStoreList[position].storeName
-        holder.starAndReview.text = hartStoreList[position].storeStar.toString() + "(${hartStoreList[position].reviewCount})"
-        holder.infoDetail.text = hartStoreList[position].distance + " * " +
-                hartStoreList[position].deliveryTime + " * " +
-                hartStoreList[position].deliveryFee
+        Glide.with(holder.view.context).load(heartStoreList[position].storePhoto).into(holder.storeImg)
+        holder.storeName.text = heartStoreList[position].storeName
+        holder.starAndReview.text = heartStoreList[position].storeStar.toString() + "(${heartStoreList[position].reviewCount})"
+        holder.infoDetail.text = heartStoreList[position].distance + " * " +
+                heartStoreList[position].deliveryTime + " * " +
+                heartStoreList[position].deliveryFee
 
         if(favoriteStoreItemClick != null) {
             holder.view.setOnClickListener {
@@ -43,7 +43,7 @@ class FavoriteStoreAdapter(private val hartStoreList : ArrayList<ResultHartStore
         }
     }
 
-    override fun getItemCount(): Int = hartStoreList.size
+    override fun getItemCount(): Int = heartStoreList.size
 
     class CustomViewholder(val view: View) : RecyclerView.ViewHolder(view) {
         val storeName: TextView = view.list_favorite_activity_item_store_name

@@ -45,6 +45,14 @@
 
     <!-- Address Frag search result -->
     <string name="address_search_tip_title_tv">검색 Tip</string>
+    <string name="address_search_tip_first_line1">* 도로명 </string>
+    <string name="address_search_tip_first_line2">+ 건물번호</string>
+    <string name="address_search_tip_second_line">(예: 송파대로 570)</string>
+    <string name="address_search_tip_third_line1">* 동/읍/면/리 </string>
+    <string name="address_search_tip_third_line2">+ 번지</string>
+    <string name="address_search_tip_fourth_line">(예: 신천동 7-30)</string>
+    <string name="address_search_tip_fifth_line1">* 건물명, 아파트명</string>
+    <string name="address_search_tip_last_line">(예: 반포자이아파트)</string>
 
     <!-- Address Frag address detail -->
     <string name="address_detail_et_hint">상세주소(아파트/동/호)</string>

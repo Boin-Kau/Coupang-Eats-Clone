@@ -1,16 +1,16 @@
 package com.example.squardcoupangeats.src.main.store
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import androidx.annotation.RequiresApi
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.BaseActivity
@@ -22,6 +22,7 @@ import com.example.squardcoupangeats.src.main.store.adapter.StoreTopImageAdapter
 import com.example.squardcoupangeats.src.main.store.models.*
 import com.example.squardcoupangeats.src.main.store.service.StoreActivityView
 import com.example.squardcoupangeats.src.main.store.service.StoreService
+import kotlinx.android.synthetic.main.activity_store.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -43,9 +44,9 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
             StoreService(this).tryGetSpecificStores(storeIndex)
         }
 
-        this.window?.apply {
-            this.statusBarColor = Color.TRANSPARENT
+        this.window.apply {
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            statusBarColor = Color.TRANSPARENT
         }
 
         // 툴바 생성
@@ -87,10 +88,18 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
         val storeInfo = response.storeInfo
         val photoReview = response.photoReview
         val categoryMenu = response.categoryMenu
+        if(response.couponInfo != null) {
+            val couponInfo = response.couponInfo
+            setCouponInfo(couponInfo)
+        } else {
+            binding.storeActivityGetCouponBtn.visibility = View.GONE
+        }
         setTogImageAdapter(imageList)
         setStoreInfo(storeInfo)
         setPhotoReview(photoReview)
         setMenu(categoryMenu)
+
+
     }
 
     override fun onGetSpecificStoreFailure(message: String) {
@@ -113,7 +122,7 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
             var currentPage = 0
             val handler = Handler()
             val update = Runnable {
-                if(currentPage == 3) {
+                if(currentPage == imageList.size) {
                     currentPage = 0
                 }
                 setCurrentItem(currentPage++, true)
@@ -127,6 +136,12 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
             }, 500, 3000)
         }
     }
+
+
+    private fun setCouponInfo(couponInfo: ResultCouponInfo) {
+        binding.storeActivitySortOfCouponTv.text = couponInfo.coupon
+    }
+
 
     @SuppressLint("SetTextI18n")
     private fun setStoreInfo(storeInfo: ArrayList<ResultStoreInfo>) {
@@ -167,7 +182,11 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
         }
         if(categoryMenu.size > 0) {
             contentLayout.storeActivityContentCategoryName1.text = categoryMenu[0].categoryName
-            contentLayout.storeActivityContentCategoryDetail1.text = categoryMenu[0].categoryDetail
+            if(categoryMenu[0].categoryDetail != null) {
+                contentLayout.storeActivityContentCategoryDetail1.text = categoryMenu[0].categoryDetail
+            } else {
+                contentLayout.storeActivityContentCategoryDetail1.visibility = View.GONE
+            }
             val menuCategoryAdapter1 = StoreMenuCategoryAdapter(categoryMenu[0].menuList)
             contentLayout.storeActivityContentCategoryRecyclerview1.adapter = menuCategoryAdapter1
             menuCategoryAdapter1.menuCategoryItemClick = object : StoreMenuCategoryAdapter.MenuCategoryItemClick {
@@ -180,7 +199,11 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
         }
         if (categoryMenu.size > 1) {
             contentLayout.storeActivityContentCategoryName2.text = categoryMenu[1].categoryName
-            contentLayout.storeActivityContentCategoryDetail2.text = categoryMenu[1].categoryDetail
+            if(categoryMenu[1].categoryDetail != null) {
+                contentLayout.storeActivityContentCategoryDetail2.text = categoryMenu[1].categoryDetail
+            } else {
+                contentLayout.storeActivityContentCategoryDetail2.visibility = View.GONE
+            }
             val menuCategoryAdapter2 = StoreMenuCategoryAdapter(categoryMenu[1].menuList)
             contentLayout.storeActivityContentCategoryRecyclerview2.adapter = menuCategoryAdapter2
             menuCategoryAdapter2.menuCategoryItemClick = object : StoreMenuCategoryAdapter.MenuCategoryItemClick {
@@ -193,7 +216,11 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
         }
         if (categoryMenu.size > 2) {
             contentLayout.storeActivityContentCategoryName3.text = categoryMenu[2].categoryName
-            contentLayout.storeActivityContentCategoryDetail3.text = categoryMenu[2].categoryDetail
+            if(categoryMenu[2].categoryDetail != null) {
+                contentLayout.storeActivityContentCategoryDetail3.text = categoryMenu[2].categoryDetail
+            } else {
+                contentLayout.storeActivityContentCategoryDetail3.visibility = View.GONE
+            }
             val menuCategoryAdapter3 = StoreMenuCategoryAdapter(categoryMenu[2].menuList)
             contentLayout.storeActivityContentCategoryRecyclerview3.adapter = menuCategoryAdapter3
             menuCategoryAdapter3.menuCategoryItemClick = object : StoreMenuCategoryAdapter.MenuCategoryItemClick {
@@ -206,7 +233,11 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
         }
         if (categoryMenu.size > 3) {
             contentLayout.storeActivityContentCategoryName4.text = categoryMenu[3].categoryName
-            contentLayout.storeActivityContentCategoryDetail4.text = categoryMenu[3].categoryDetail
+            if(categoryMenu[3].categoryDetail != null) {
+                contentLayout.storeActivityContentCategoryDetail4.text = categoryMenu[3].categoryDetail
+            } else {
+                contentLayout.storeActivityContentCategoryDetail4.visibility = View.GONE
+            }
             val menuCategoryAdapter4 = StoreMenuCategoryAdapter(categoryMenu[3].menuList)
             contentLayout.storeActivityContentCategoryRecyclerview4.adapter = menuCategoryAdapter4
             menuCategoryAdapter4.menuCategoryItemClick = object : StoreMenuCategoryAdapter.MenuCategoryItemClick {
@@ -219,7 +250,11 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
         }
         if (categoryMenu.size > 4) {
             contentLayout.storeActivityContentCategoryName5.text = categoryMenu[4].categoryName
-            contentLayout.storeActivityContentCategoryDetail5.text = categoryMenu[4].categoryDetail
+            if(categoryMenu[4].categoryDetail != null) {
+                contentLayout.storeActivityContentCategoryDetail5.text = categoryMenu[4].categoryDetail
+            } else {
+                contentLayout.storeActivityContentCategoryDetail5.visibility = View.GONE
+            }
             val menuCategoryAdapter5 = StoreMenuCategoryAdapter(categoryMenu[4].menuList)
             contentLayout.storeActivityContentCategoryRecyclerview5.adapter = menuCategoryAdapter5
             menuCategoryAdapter5.menuCategoryItemClick = object : StoreMenuCategoryAdapter.MenuCategoryItemClick {
@@ -229,6 +264,9 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
                     startActivity(intent)
                 }
             }
+        } else {
+            contentLayout.menuCategory5Layout.visibility = View.GONE
+            contentLayout.storeActivityContentCategoryRecyclerview5.visibility = View.GONE
         }
     }
 }

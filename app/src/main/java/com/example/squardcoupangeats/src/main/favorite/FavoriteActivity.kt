@@ -61,17 +61,17 @@ class FavoriteActivity : BaseActivity<ActivityFavoriteBinding>(ActivityFavoriteB
     override fun onGetFavoriteStoreSuccess(response: GetFavoriteStoreResponse) {
         Log.d(TAG, "Get Favorite Store 성공 : ${response.message}")
 
-        binding.favoriteActivityTotalFavoriteNum.text = "총 "+response.hartCount.toString()+"개"
-        setAdapter(response.hartStore)
+        binding.favoriteActivityTotalFavoriteNum.text = "총 "+response.heartCount.toString()+"개"
+        setAdapter(response.heartStore)
     }
 
-    private fun setAdapter(hartStoreList: ArrayList<ResultHartStore>) {
-        val favoriteAdapter = FavoriteStoreAdapter(hartStoreList)
+    private fun setAdapter(heartStoreList: ArrayList<ResultHartStore>) {
+        val favoriteAdapter = FavoriteStoreAdapter(heartStoreList)
         binding.favoriteActivityRecyclerview.adapter = favoriteAdapter
         favoriteAdapter.favoriteStoreItemClick = object : FavoriteStoreAdapter.FavoriteStoreItemClick{
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(this@FavoriteActivity, StoreActivity::class.java)
-                intent.putExtra("storeIndex", hartStoreList[position].storeIdx)
+                intent.putExtra("storeIndex", heartStoreList[position].storeIdx)
                 startActivity(intent)
             }
 

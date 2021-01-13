@@ -17,22 +17,13 @@
             android:id="@+id/frag_naver_map"
             android:name="com.naver.maps.map.MapFragment" />
 
-        <com.naver.maps.map.widget.LocationButtonView
-            android:id="@+id/navermap_location_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="12dp"/>
-
     </FrameLayout>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="20dp">
+        android:layout_margin="25dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,21 +31,24 @@
             android:text="주소 타이틀"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="주소 서브 타이틀"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="5dp"
+            android:textSize="16sp"
+            android:textColor="@color/gray_text_color"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/address_tv_set_address_title"
+            android:layout_height="55dp"
+            android:text="@string/naver_map_set_address_btn"
             android:textColor="@color/white"
             android:background="@drawable/naver_map_btn_style"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"/>
 
     </LinearLayout>
 

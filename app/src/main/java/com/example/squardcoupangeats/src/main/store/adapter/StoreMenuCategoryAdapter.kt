@@ -26,6 +26,13 @@ class StoreMenuCategoryAdapter(private val menuList : ArrayList<MenuListData>) :
     }
 
     override fun onBindViewHolder(holder: CustomViewholder, position: Int) {
+        if(menuList[position].isBestOrder == "N") {
+            holder.isBestOrder.visibility = View.GONE
+        }
+        if(menuList[position].isBestReview == "N") {
+            holder.isBestReview.visibility = View.GONE
+        }
+
         if(menuList[position].menuDetail != null) {
             holder.menuDetail.text = menuList[position].menuDetail
         } else {
@@ -37,6 +44,7 @@ class StoreMenuCategoryAdapter(private val menuList : ArrayList<MenuListData>) :
         } else {
             holder.menuThumbnail.visibility = View.GONE
         }
+
         holder.menuName.text = menuList[position].menuName
         holder.menuPrice.text = menuList[position].menuPrice
 
@@ -54,5 +62,7 @@ class StoreMenuCategoryAdapter(private val menuList : ArrayList<MenuListData>) :
         val menuPrice : TextView = view.list_store_activity_menu_category_menu_price
         val menuDetail : TextView = view.list_store_activity_menu_category_menu_detail
         val menuThumbnail : ImageView = view.list_store_activity_menu_category_menu_thumbnail
+        val isBestOrder : TextView = view.list_store_activity_menu_category_lots_of_order
+        val isBestReview : TextView = view.list_store_activity_menu_category_best_review
     }
 }

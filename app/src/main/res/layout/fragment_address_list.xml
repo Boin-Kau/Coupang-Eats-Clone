@@ -8,25 +8,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp">
 
         <LinearLayout
             android:id="@+id/address_search_using_gps_btn"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="55dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:background="@drawable/search_address_using_gps_btn_style"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_gps"
-                android:backgroundTint="@color/black"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ic_gps" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -37,6 +36,108 @@
                 android:layout_marginStart="18dp"/>
 
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/ic_home_small"
+                android:id="@+id/frag_address_list_item_home_iv"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/frag_address_list_item_home_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="집 추가"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_toRightOf="@id/frag_address_list_item_home_iv"
+                android:layout_marginStart="15dp"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/frag_address_list_item_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="집"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_toRightOf="@id/frag_address_list_item_home_iv"
+                tools:ignore="RtlHardcoded"
+                android:layout_marginStart="15dp"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/frag_address_list_item_home_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주소"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/frag_address_list_item_home"
+                android:layout_toRightOf="@id/frag_address_list_item_home_iv"
+                android:textSize="14sp"
+                android:textColor="@color/gray_text_color"
+                android:layout_marginStart="15dp"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/ic_company"
+                android:id="@+id/frag_address_list_item_company_iv"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/frag_address_list_item_company_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="회사 추가"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_toRightOf="@id/frag_address_list_item_company_iv"
+                android:layout_marginStart="15dp"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/frag_address_list_item_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="회사"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_toRightOf="@id/frag_address_list_item_company_iv"
+                tools:ignore="RtlHardcoded"
+                android:layout_marginStart="15dp"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/frag_address_list_item_company_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주소"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/frag_address_list_item_company"
+                android:layout_toRightOf="@id/frag_address_list_item_company_iv"
+                android:textSize="14sp"
+                android:textColor="@color/gray_text_color"
+                android:layout_marginStart="15dp"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/address_list_frag_recyclerview"

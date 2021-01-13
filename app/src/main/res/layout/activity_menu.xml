@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context=".src.main.menu.MenuActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
+        android:fitsSystemWindows="false"
         android:theme="@style/Theme.SquardCoupangEats.AppBarOverlay">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -26,10 +25,11 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/menu_activity_top_bar_view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="250dp"
                 android:scaleType="fitXY"/>
 
             <androidx.appcompat.widget.Toolbar
+                android:layout_marginTop="24dp"
                 android:id="@+id/menu_activity_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
-        android:background="@drawable/add_cart_btn_style"
+        android:background="@color/app_custom_color"
         android:text="카트에 담기"
         android:textColor="@color/white"
         android:textSize="16sp"

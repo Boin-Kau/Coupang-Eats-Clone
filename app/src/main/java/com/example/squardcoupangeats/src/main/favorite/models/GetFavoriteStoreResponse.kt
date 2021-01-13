@@ -3,8 +3,8 @@ package com.example.squardcoupangeats.src.main.favorite.models
 import com.google.gson.annotations.SerializedName
 
 data class GetFavoriteStoreResponse(
-        @SerializedName("heartCount") val hartCount : Int,
-        @SerializedName("heartStore") val hartStore : ArrayList<ResultHartStore>,
+        @SerializedName("heartCount") val heartCount : Int,
+        @SerializedName("heartStore") val heartStore : ArrayList<ResultHartStore>,
         @SerializedName("isSuccess") val isSuccess: Boolean,
         @SerializedName("code") val code: Int,
         @SerializedName("message") val message: String
@@ -22,5 +22,6 @@ data class ResultHartStore(
         @SerializedName("distance") val distance: String,
         @SerializedName("isCheetah") val isCheetah : String
 )
+
 
 

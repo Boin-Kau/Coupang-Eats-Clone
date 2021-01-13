@@ -5,21 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context=".src.main.store.StoreActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
+        android:fitsSystemWindows="false"
         android:theme="@style/Theme.SquardCoupangEats.AppBarOverlay">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/store_activity_toolbar">
@@ -29,31 +27,37 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 
-                <FrameLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="280dp">
+                    android:layout_height="330dp">
 
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/store_activity_top_bar_view_pager"
                         android:layout_width="match_parent"
-                        android:layout_height="220dp"
-                        android:scaleType="fitXY"/>
+                        android:layout_height="240dp"
+                        android:scaleType="fitXY"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
                     <androidx.cardview.widget.CardView
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        card_view:cardUseCompatPadding="true"
+                        app:cardElevation="10dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
-                        app:cardUseCompatPadding="true"
-                        app:cardElevation="10dp"
-                        android:layout_gravity="bottom"
                         app:cardBackgroundColor="@color/white"
-                        app:cardPreventCornerOverlap="false">
+                        android:layout_gravity="bottom"
+                        app:cardPreventCornerOverlap="false"
+                        app:layout_constraintBottom_toBottomOf="parent">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:padding="20dp">
+                            android:padding="25dp"
+                            android:background="@color/white">
 
                             <TextView
                                 android:id="@+id/store_activity_place_name"
@@ -61,7 +65,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="장소 이름"
                                 android:textColor="@color/black"
-                                android:textSize="24sp"
+                                android:textSize="30sp"
                                 android:textStyle="bold"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -73,6 +77,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
+                                android:layout_marginTop="5dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +96,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="4.7"
                                     android:textColor="@color/black"
-                                    android:textSize="16sp"
+                                    android:textSize="18sp"
                                     android:layout_marginStart="3dp"/>
 
                                 <LinearLayout
@@ -100,7 +105,7 @@
                                     android:layout_height="16dp"
                                     android:orientation="horizontal"
                                     android:layout_marginStart="8dp"
-                                    android:gravity="center">
+                                    android:gravity="center_vertical">
 
                                     <TextView
                                         android:id="@+id/store_activity_review_count_tv"
@@ -111,8 +116,8 @@
                                         android:textSize="14sp"/>
 
                                     <ImageView
-                                        android:layout_width="15dp"
-                                        android:layout_height="15dp"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
                                         android:background="@drawable/ic_arrow_right"
                                         android:backgroundTint="@color/app_custom_color" />
                                 </LinearLayout>
@@ -122,12 +127,13 @@
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
-                </FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:id="@+id/store_activity_get_coupon_btn"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:orientation="horizontal"
@@ -137,15 +143,14 @@
                     <ImageView
                         android:layout_width="16dp"
                         android:layout_height="16dp"
-                        android:background="@drawable/ic_download"
-                        android:backgroundTint="@color/app_custom_color"/>
+                        android:background="@drawable/ic_download_coupon"/>
 
                     <TextView
                         android:id="@+id/store_activity_sort_of_coupon_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="쿠폰 받기"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/app_custom_color"
                         android:layout_marginStart="5dp"/>
@@ -175,7 +180,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="배달 시간"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
                             android:textColor="@color/black"
                             android:layout_marginStart="3dp"
                             android:textStyle="bold"/>
@@ -191,7 +196,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
                             android:text="@string/store_information_of_store_tv"
                             android:textColor="@color/app_custom_color"
                             android:textStyle="bold"/>
@@ -214,7 +219,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="배달비"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"/>
 
                     <TextView
@@ -223,17 +228,16 @@
                         android:id="@+id/store_activity_delivery_fee_tv"
                         android:text="배달비"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:layout_marginStart="30dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="자세히"
-                        android:textColor="@color/main_btm_nav_item_unselected_color"
-                        android:textSize="12sp"
-                        android:layout_marginStart="3dp"/>
+                        android:textColor="@color/gray_text_color"
+                        android:textSize="14sp"
+                        android:layout_marginStart="5dp"/>
 
                 </LinearLayout>
 
@@ -242,13 +246,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="최소주문"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textColor="@color/black"/>
 
                     <TextView
@@ -257,16 +262,18 @@
                         android:id="@+id/store_activity_minimum_of_delivery_pay"
                         android:text="금액"
                         android:textColor="@color/black"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:layout_marginStart="19dp"/>
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:id="@+id/store_activity_review_recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="90dp"
                     tools:listitem="@layout/list_store_activity_review_recyclerview"
-                    android:layout_margin="20dp"/>
+                    android:layout_marginBottom="20dp"/>
 
             </LinearLayout>
 
@@ -275,7 +282,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/Theme.SquardCoupangEats.PopupOverlay" />
+                android:layout_marginTop="24dp"
+                app:popupTheme="@style/Theme.SquardCoupangEats.PopupOverlay"/>
+
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

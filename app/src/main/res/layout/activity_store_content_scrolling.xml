@@ -12,23 +12,30 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/store_activity_content_tab_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:tabSelectedTextColor="@color/black"
-            app:tabIndicatorColor="@color/black"/>
+            app:tabIndicatorColor="@color/black"
+            app:tabTextAppearance="@style/tab_text"
+            app:tabMaxWidth="0dp"
+            app:tabGravity="fill"
+            app:tabMode="scrollable"
+            android:layout_marginStart="20dp" />
 
     </HorizontalScrollView>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="@color/line_for_dividing_layout_color"/>
+        android:layout_height="2dp"
+        android:background="@color/main_btm_nav_item_unselected_color"/>
 
     <androidx.core.widget.NestedScrollView
+        android:layout_marginTop="24dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -42,26 +49,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:id="@+id/store_activity_content_category_name1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="신메뉴"
+                    android:text="추천메뉴"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/store_activity_content_category_detail1"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="10dp"
+                    android:textSize="12dp"
                     android:text="안녕하세요"
-                    android:textColor="@color/black"
-                    tools:ignore="SpUsage"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/store_activity_content_category_recyclerview1"
@@ -81,7 +88,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:id="@+id/store_activity_content_category_name2"
@@ -89,18 +98,16 @@
                     android:layout_height="wrap_content"
                     android:text="신메뉴"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/store_activity_content_category_detail2"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="10dp"
+                    android:textSize="12dp"
                     android:text="안녕하세요"
-                    android:textColor="@color/black"
-                    tools:ignore="SpUsage"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/store_activity_content_category_recyclerview2"
@@ -120,7 +127,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:id="@+id/store_activity_content_category_name3"
@@ -128,18 +137,16 @@
                     android:layout_height="wrap_content"
                     android:text="신메뉴"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/store_activity_content_category_detail3"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="10dp"
+                    android:textSize="12dp"
                     android:text="안녕하세요"
-                    android:textColor="@color/black"
-                    tools:ignore="SpUsage"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/store_activity_content_category_recyclerview3"
@@ -159,7 +166,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:id="@+id/store_activity_content_category_name4"
@@ -167,18 +176,16 @@
                     android:layout_height="wrap_content"
                     android:text="신메뉴"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/store_activity_content_category_detail4"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="10dp"
+                    android:textSize="12dp"
                     android:text="안녕하세요"
-                    android:textColor="@color/black"
-                    tools:ignore="SpUsage"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/store_activity_content_category_recyclerview4"
@@ -195,10 +202,13 @@
                 android:background="@color/line_for_dividing_layout_color"/>
 
             <LinearLayout
+                android:id="@+id/menu_category5_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:id="@+id/store_activity_content_category_name5"
@@ -206,18 +216,16 @@
                     android:layout_height="wrap_content"
                     android:text="신메뉴"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/store_activity_content_category_detail5"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="10dp"
+                    android:textSize="12dp"
                     android:text="안녕하세요"
-                    android:textColor="@color/black"
-                    tools:ignore="SpUsage"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/store_activity_content_category_recyclerview5"

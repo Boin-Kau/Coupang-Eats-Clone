@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="Menu Name"
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"/>
@@ -29,8 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="12sp"
-            android:textColor="@color/main_btm_nav_item_unselected_color"
+            android:textSize="14sp"
+            android:textColor="@color/gray_text_color"
             android:text="Menu Detail"
             android:layout_marginStart="20dp"/>
         
@@ -64,8 +64,7 @@
                 android:layout_height="wrap_content"
                 android:text="0000원"
                 android:textSize="16sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textColor="@color/black" />
 
 
         </LinearLayout>
@@ -85,7 +84,7 @@
                 android:text="수량"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="15sp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -94,8 +93,8 @@
                 android:gravity="center_vertical">
                 <ImageButton
                     android:id="@+id/menu_activity_remove_count"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:src="@drawable/ic_remove"
                     android:background="@drawable/plus_and_minus_button_style"
                     android:tint="@color/black"/>
@@ -112,8 +111,8 @@
 
                 <ImageButton
                     android:id="@+id/menu_activity_add_count"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:src="@drawable/ic_add"
                     android:tint="@color/black"
                     android:background="@drawable/plus_and_minus_button_style"/>
@@ -122,41 +121,124 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/menu_activity_first_option_name"
+        <LinearLayout
+            android:id="@+id/menu_activity_first_option_layout"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_weight="1"
-            android:text="옵션 카테고리1"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:gravity="center_vertical"
-            android:background="@color/line_for_dividing_layout_color"
-            android:paddingStart="20dp"/>
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="@color/line_for_dividing_layout_color">
+
+            <TextView
+                android:id="@+id/menu_activity_first_option_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="옵션 카테고리1"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:background="@color/line_for_dividing_layout_color"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/menu_activity_first_option_mandatory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="필수 선택"
+                android:textSize="14sp"
+                android:textColor="@color/red"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/menu_activity_first_option_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/list_menu_activity_option_menu_recyclerview"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
-        <TextView
-            android:id="@+id/menu_activity_second_option_name"
+        <LinearLayout
+            android:id="@+id/menu_activity_second_option_layout"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_weight="1"
-            android:text="옵션 카테고리2"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:gravity="center_vertical"
-            android:background="@color/line_for_dividing_layout_color"
-            android:paddingStart="20dp"/>
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="@color/line_for_dividing_layout_color">
+
+            <TextView
+                android:id="@+id/menu_activity_second_option_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="옵션 카테고리2"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:background="@color/line_for_dividing_layout_color"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/menu_activity_second_option_mandatory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="필수 선택"
+                android:textSize="14sp"
+                android:textColor="@color/red"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/menu_activity_second_option_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/list_menu_activity_option_menu_recyclerview"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <LinearLayout
+            android:id="@+id/menu_activity_third_option_layout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="@color/line_for_dividing_layout_color">
+
+            <TextView
+                android:id="@+id/menu_activity_third_option_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="옵션 카테고리3"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:background="@color/line_for_dividing_layout_color"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/menu_activity_third_option_mandatory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="필수 선택"
+                android:textSize="14sp"
+                android:textColor="@color/red"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/menu_activity_third_option_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
     </LinearLayout>
 

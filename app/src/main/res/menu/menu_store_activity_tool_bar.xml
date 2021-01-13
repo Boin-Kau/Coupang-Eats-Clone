@@ -6,13 +6,11 @@
         android:id="@+id/menu_store_share"
         android:title="share"
         app:showAsAction="always"
-        android:icon="@drawable/ic_share"
-        android:iconTint="@color/white"/>
+        android:icon="@drawable/ic_share_white"/>
 
     <item
         android:id="@+id/menu_store_favorite"
         android:title="favorite"
         app:showAsAction="always"
-        android:icon="@drawable/ic_favorite"
-        android:iconTint="@color/white"/>
+        android:icon="@drawable/ic_favorite_white"/>
 </menu>

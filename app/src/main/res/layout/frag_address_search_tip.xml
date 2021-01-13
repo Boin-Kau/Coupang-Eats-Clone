@@ -13,8 +13,89 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/address_search_tip_title_tv"
-            android:textSize="20sp"
-            android:textColor="@color/black"/>
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address_search_tip_first_line1"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address_search_tip_first_line2"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address_search_tip_second_line"
+            android:textColor="@color/gray_text_color"
+            android:layout_marginStart="5dp"
+            android:textSize="15sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address_search_tip_third_line1"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address_search_tip_third_line2"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address_search_tip_fourth_line"
+            android:textColor="@color/gray_text_color"
+            android:layout_marginStart="5dp"
+            android:textSize="15sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address_search_tip_fifth_line1"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address_search_tip_last_line"
+            android:textColor="@color/gray_text_color"
+            android:layout_marginStart="5dp"
+            android:textSize="15sp"/>
+
+
+
 
     </LinearLayout>
 

@@ -23,8 +23,8 @@
 
                 <ImageView
                     android:id="@+id/address_activity_close_btn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:background="@drawable/ic_clear"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -32,9 +32,9 @@
                     android:backgroundTint="@color/black"/>
 
                 <ImageView
-                    android:id="@+id/address_activity_back_btn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:id="@+id/address_activity_back_btn_first"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:background="@drawable/ic_baseline_arrow_back_24"
                     android:backgroundTint="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +42,19 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:visibility="invisible"/>
 
+                <ImageView
+                    android:id="@+id/address_activity_back_btn_second"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_baseline_arrow_back_24"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:visibility="invisible"/>
 
                 <TextView
+                    android:id="@+id/address_activity_title_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/address_tv_set_address_title"
@@ -63,13 +74,16 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:background="@drawable/ic_search"
-            android:layout_marginStart="24dp" />
+            android:layout_marginStart="22dp"
+            android:backgroundTint="@color/black"/>
 
         <EditText
             android:id="@+id/address_et_search_address"
@@ -78,17 +92,21 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:hint="@string/address_et_search_address_hint"
-            android:textSize="14sp"
+            android:textColorHint="@color/gray_text_color"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             android:layout_marginStart="20dp"
             android:imeOptions="actionSearch"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/et_cursor_color_style"/>
 
     </LinearLayout>
 
     <!-- 구분선 -->
     <View
+        android:id="@+id/address_activity_dividing_line"
         android:layout_width="match_parent"
-        android:layout_height="15px"
+        android:layout_height="10dp"
         android:background="@color/line_for_dividing_layout_color"/>
 
     <FrameLayout
@@ -96,7 +114,5 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
-
-
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.squardcoupangeats.src.main.menu
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -10,8 +11,10 @@ import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
 import com.example.squardcoupangeats.R
+import com.example.squardcoupangeats.config.ApplicationClass.Companion.radioBtnSelected1
 import com.example.squardcoupangeats.config.BaseActivity
 import com.example.squardcoupangeats.databinding.ActivityMenuBinding
+import com.example.squardcoupangeats.src.main.menu.adapter.MenuOptionAdapter
 import com.example.squardcoupangeats.src.main.menu.adapter.MenuTopImageAdapter
 import com.example.squardcoupangeats.src.main.menu.models.ResultMenuInfo
 import com.example.squardcoupangeats.src.main.menu.models.ResultOptCategoryMenu
@@ -19,7 +22,6 @@ import com.example.squardcoupangeats.src.main.menu.models.SpecificMenuResponse
 import com.example.squardcoupangeats.src.main.menu.service.MenuActivityView
 import com.example.squardcoupangeats.src.main.menu.service.MenuService
 import java.util.*
-import kotlin.collections.ArrayList
 
 @Suppress("DEPRECATION")
 class MenuActivity : BaseActivity<ActivityMenuBinding>(ActivityMenuBinding::inflate), MenuActivityView {
@@ -80,30 +82,39 @@ class MenuActivity : BaseActivity<ActivityMenuBinding>(ActivityMenuBinding::infl
         val categoryList = response.optCategoryMenu
 
         setTogImageAdapter(imageList)
-        setMenuInfo(infoList, categoryList)
+        setMenuInfo(infoList)
+        setOptionMenu(categoryList)
     }
 
-    private fun setMenuInfo(infoList: ArrayList<ResultMenuInfo>, categoryList: ArrayList<ResultOptCategoryMenu>) {
+    private fun setOptionMenu(categoryList: ArrayList<ResultOptCategoryMenu>) {
+        val contentLayout = binding.menuActivityContentLayout
+
+        val firstOptionList = categoryList[0]
+        contentLayout.menuActivityFirstOptionName.text = firstOptionList.optCategoryName
+        val firstOptionAdapter = MenuOptionAdapter(firstOptionList.optMenuList)
+        contentLayout.menuActivityFirstOptionRecyclerview.adapter = firstOptionAdapter
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setMenuInfo(infoList: ArrayList<ResultMenuInfo>){
         val contentLayout = binding.menuActivityContentLayout
         contentLayout.menuActivityMenuName.text = infoList[0].menuName
         contentLayout.menuActivityMenuDetail.text = infoList[0].menuDetail
-        // contentLayout.menuActivityMenuPrice.text = infoList[0].menuPrice
+        contentLayout.menuActivityMenuPrice.text = infoList[0].menuPrice.toString() + "원"
         contentLayout.menuActivityMenuAmount.text = menuAmount.toString()
 
-//        contentLayout.menuActivityAddCount.setOnClickListener {
-//            menuAmount++
-//            contentLayout.menuActivityMenuAmount.text = menuAmount.toString()
-//            contentLayout.menuActivityMenuPrice.text = (infoList[0].menuPrice.toInt() * menuAmount).toString()
-//        }
-//        contentLayout.menuActivityRemoveCount.setOnClickListener {
-//            if(menuAmount > 1) {
-//                menuAmount--
-//                contentLayout.menuActivityMenuAmount.text = menuAmount.toString()
-//                contentLayout.menuActivityMenuPrice.text = (infoList[0].menuPrice.toInt() * menuAmount).toString()
-//            }
-//        }
-
-
+        contentLayout.menuActivityAddCount.setOnClickListener {
+            menuAmount++
+            contentLayout.menuActivityMenuAmount.text = menuAmount.toString()
+            contentLayout.menuActivityMenuPrice.text = (menuAmount * infoList[0].menuPrice).toString() + "원"
+        }
+        contentLayout.menuActivityRemoveCount.setOnClickListener {
+            if(menuAmount > 1) {
+                menuAmount--
+                contentLayout.menuActivityMenuAmount.text = menuAmount.toString()
+                contentLayout.menuActivityMenuPrice.text = (menuAmount * infoList[0].menuPrice).toString() + "원"
+            }
+        }
     }
 
     private fun setTogImageAdapter(imageList: ArrayList<String>) {
@@ -114,7 +125,7 @@ class MenuActivity : BaseActivity<ActivityMenuBinding>(ActivityMenuBinding::infl
             var currentPage = 0
             val handler = Handler()
             val update = Runnable {
-                if(currentPage == 3) {
+                if(currentPage == imageList.size) {
                     currentPage = 0
                 }
                 setCurrentItem(currentPage++, true)
@@ -124,7 +135,6 @@ class MenuActivity : BaseActivity<ActivityMenuBinding>(ActivityMenuBinding::infl
                 override fun run() {
                     handler.post(update)
                 }
-
             }, 500, 3000)
         }
 
@@ -134,4 +144,5 @@ class MenuActivity : BaseActivity<ActivityMenuBinding>(ActivityMenuBinding::infl
         showCustomToast("오류 : $message")
         Log.d("오류", message)
     }
+
 }

@@ -70,6 +70,8 @@ class ApplicationClass : Application() {
 
         // 부트페이 Application ID
         const val BOOT_PAY_APPLICATION_ID = "600015b55b294800202a1c03"
+        const val BOOT_PAY_REST_ID = "600015b55b294800202a1c05"
+        const val PRIVATE_KEY = "RMZFNFWdlZ3Ggo6hVixm0OpaRmW876gW8Eyrx+C4Akw="
 
         // 로그인 상태 확인 flag
         var loginFlag : Int = 0

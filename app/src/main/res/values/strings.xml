@@ -69,4 +69,10 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_menu">ScrollingActivity</string>
 
+    <!-- Cart -->
+    <string name="card_activity_long_text_view">쿠팡은 통신판매중개자로서 통신판매의 당사자가 아니며, 판매자가 등록한 상품\n
+        정보, 상품의 품질 및 거래에 대해서 일체의 책임을 지지 않습니다. 회원은 주문\n
+        내용을 확인하였고, 결제에 동의합니다.
+    </string>
+
 </resources>

@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.squardcoupangeats"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -86,4 +86,7 @@ dependencies {
 
     //네이버 로그인
     implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6'
+
+    // 부트페이(다날, 앱카드결제)
+    implementation 'com.github.bootpay:client_android_java:3.3.82'
 }

@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/store_activity_layout"
     tools:context=".src.main.store.StoreActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -300,7 +301,7 @@
         android:orientation="horizontal"
         android:visibility="gone"
         android:layout_gravity="bottom"
-        android:background="@drawable/add_cart_btn_style">
+        android:background="@color/app_custom_color">
 
         <TextView
             android:layout_width="wrap_content"

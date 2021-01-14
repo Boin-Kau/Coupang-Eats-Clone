@@ -1,6 +1,8 @@
 package com.example.squardcoupangeats.src.main.menu.service
 
 import com.example.squardcoupangeats.config.ApplicationClass
+import com.example.squardcoupangeats.src.main.menu.models.AddingCartResponse
+import com.example.squardcoupangeats.src.main.menu.models.PostAddingCartRequest
 import com.example.squardcoupangeats.src.main.menu.models.SpecificMenuResponse
 import com.example.squardcoupangeats.src.main.store.models.SpecificStoreResponse
 import com.example.squardcoupangeats.src.main.store.service.StoreRetrofitInterface
@@ -20,6 +22,20 @@ class MenuService(val view: MenuActivityView) {
             override fun onFailure(call: Call<SpecificMenuResponse>, t: Throwable) {
                 view.onGetSpecificMenuFailure(t.message ?: "통신 오류")
             }
+        })
+    }
+
+    fun tryPostAddingCart(request: PostAddingCartRequest) {
+        val menuRetrofitInterface = ApplicationClass.sRetrofit.create(MenuRetrofitInterface::class.java)
+        menuRetrofitInterface.postAddingCart(request).enqueue(object : Callback<AddingCartResponse> {
+            override fun onResponse(call: Call<AddingCartResponse>, response: Response<AddingCartResponse>) {
+                view.onPostAddingCartSuccess(response.body() as AddingCartResponse)
+            }
+
+            override fun onFailure(call: Call<AddingCartResponse>, t: Throwable) {
+                view.onPostAddingCartFailure(t.message ?: "통신 오류")
+            }
+
         })
     }
 }

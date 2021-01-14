@@ -33,6 +33,7 @@
         </activity>
         <activity android:name=".src.main.MainActivity" />
         <activity android:name=".src.main.favorite.FavoriteActivity"/>
+        <activity android:name=".src.main.cart.CartActivity"/>
         <activity
             android:name=".src.main.address.AddressActivity"
             android:windowSoftInputMode="adjustPan" />

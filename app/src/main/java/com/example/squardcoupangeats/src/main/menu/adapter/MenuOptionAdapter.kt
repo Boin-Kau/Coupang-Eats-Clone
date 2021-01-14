@@ -1,5 +1,6 @@
 package com.example.squardcoupangeats.src.main.menu.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -28,17 +29,22 @@ class MenuOptionAdapter(private val optionMenuList: ArrayList<OptMenuListData>) 
         return MenuOptionAdapter.CustomViewholder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CustomViewholder, position: Int) {
 
-//        if(menuOptionItemClick != null) {
-//            holder.view.setOnClickListener {
-//                menuOptionItemClick?.onClick(it, position)
-//            }
-//        }
+        if(menuOptionItemClick != null) {
+            holder.view.setOnClickListener {
+                menuOptionItemClick?.onClick(it, position)
+            }
+        }
 
         holder.radioBtn.tag = optionMenuList[position].menuOptIdx
-        val optionMenuDataList = optionMenuList[position].menuOptName.split('(')
-        holder.menuName.text = optionMenuDataList[0]
+        holder.menuName.text = optionMenuList[position].menuOptName
+        if(optionMenuList[position].menuOptPrice != null) {
+            holder.extraFee.text = optionMenuList[position].menuOptPrice
+        } else {
+            holder.extraFee.visibility = View.GONE
+        }
 
         holder.view.setOnClickListener {
             radioBtnSelected1 = position

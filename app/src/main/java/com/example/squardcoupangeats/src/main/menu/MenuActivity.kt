@@ -1,6 +1,7 @@
 package com.example.squardcoupangeats.src.main.menu
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -11,25 +12,27 @@ import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
 import com.example.squardcoupangeats.R
-import com.example.squardcoupangeats.config.ApplicationClass.Companion.radioBtnSelected1
 import com.example.squardcoupangeats.config.BaseActivity
 import com.example.squardcoupangeats.databinding.ActivityMenuBinding
+import com.example.squardcoupangeats.src.main.menu.adapter.CheckBoxState
 import com.example.squardcoupangeats.src.main.menu.adapter.MenuOptionAdapter
+import com.example.squardcoupangeats.src.main.menu.adapter.MenuOptionCheckboxAdapter
 import com.example.squardcoupangeats.src.main.menu.adapter.MenuTopImageAdapter
-import com.example.squardcoupangeats.src.main.menu.models.ResultMenuInfo
-import com.example.squardcoupangeats.src.main.menu.models.ResultOptCategoryMenu
-import com.example.squardcoupangeats.src.main.menu.models.SpecificMenuResponse
+import com.example.squardcoupangeats.src.main.menu.models.*
 import com.example.squardcoupangeats.src.main.menu.service.MenuActivityView
 import com.example.squardcoupangeats.src.main.menu.service.MenuService
+import com.example.squardcoupangeats.src.main.store.StoreActivity
 import java.util.*
 
 @Suppress("DEPRECATION")
 class MenuActivity : BaseActivity<ActivityMenuBinding>(ActivityMenuBinding::inflate), MenuActivityView {
 
+    private var price = 0
     val TAG = "tag"
     private var menuIndex : Int = 0
     private lateinit var timer : Timer
     var menuAmount = 1
+    var checkBoxStateList = ArrayList<CheckBoxState>()
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +58,22 @@ class MenuActivity : BaseActivity<ActivityMenuBinding>(ActivityMenuBinding::infl
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white)
         supportActionBar!!.title = "" // 메뉴이름으로 세팅
 
+        for(i in 0..30) {
+            checkBoxStateList.add(CheckBoxState(false))
+        }
+
+        // 카트 담기
+        binding.menuActivityAddCart.setOnClickListener {
+            MenuService(this).tryPostAddingCart(PostAddingCartRequest(storeIdx = 1, menuIdx = 1, quantity = 1, optionList = arrayListOf(1,5,7)))
+            // Intent에 총 금액 담기
+            val intent = Intent(this, StoreActivity::class.java)
+            intent.putExtra("cart", 30000)
+            intent.putExtra("storeIndex", 1)
+            startActivity(intent)
+            finish()
+        }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -91,8 +109,44 @@ class MenuActivity : BaseActivity<ActivityMenuBinding>(ActivityMenuBinding::infl
 
         val firstOptionList = categoryList[0]
         contentLayout.menuActivityFirstOptionName.text = firstOptionList.optCategoryName
-        val firstOptionAdapter = MenuOptionAdapter(firstOptionList.optMenuList)
-        contentLayout.menuActivityFirstOptionRecyclerview.adapter = firstOptionAdapter
+        if(firstOptionList.isMandatory == "Y") {
+            val firstOptionAdapter = MenuOptionAdapter(firstOptionList.optMenuList)
+            contentLayout.menuActivityFirstOptionRecyclerview.adapter = firstOptionAdapter
+            firstOptionAdapter.menuOptionItemClick = object : MenuOptionAdapter.MenuOptionItemClick {
+                override fun onClick(view: View, position: Int) {
+                    if(firstOptionList.optMenuList[position].optPrice != null) {
+                        val currentPrice = contentLayout.menuActivityMenuPrice.text.toString()
+                        contentLayout.menuActivityMenuPrice.text = (currentPrice.toInt() + firstOptionList.optMenuList[position].optPrice).toString()
+                    }
+                }
+            }
+        } else {
+            val firstOptionAdapter = MenuOptionCheckboxAdapter(firstOptionList.optMenuList, checkBoxStateList)
+            contentLayout.menuActivityFirstOptionRecyclerview.adapter = firstOptionAdapter
+            contentLayout.menuActivityFirstOptionMandatory.visibility = View.GONE
+        }
+
+        val secondOptionList = categoryList[1]
+        contentLayout.menuActivitySecondOptionName.text = secondOptionList.optCategoryName
+        if(secondOptionList.isMandatory == "Y") {
+            val secondOptionAdapter = MenuOptionAdapter(secondOptionList.optMenuList)
+            contentLayout.menuActivitySecondOptionRecyclerview.adapter = secondOptionAdapter
+        } else {
+            val secondOptionAdapter = MenuOptionCheckboxAdapter(secondOptionList.optMenuList, checkBoxStateList)
+            contentLayout.menuActivitySecondOptionRecyclerview.adapter = secondOptionAdapter
+            contentLayout.menuActivitySecondOptionMandatory.visibility = View.GONE
+        }
+
+        val thirdOptionList = categoryList[2]
+        contentLayout.menuActivityThirdOptionName.text = thirdOptionList.optCategoryName
+        if(thirdOptionList.isMandatory == "Y") {
+            val thirdOptionAdapter = MenuOptionAdapter(thirdOptionList.optMenuList)
+            contentLayout.menuActivityThirdOptionRecyclerview.adapter = thirdOptionAdapter
+        } else {
+            val thirdOptionAdapter = MenuOptionCheckboxAdapter(thirdOptionList.optMenuList, checkBoxStateList)
+            contentLayout.menuActivityThirdOptionRecyclerview.adapter = thirdOptionAdapter
+            contentLayout.menuActivityThirdOptionMandatory.visibility = View.GONE
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -100,19 +154,23 @@ class MenuActivity : BaseActivity<ActivityMenuBinding>(ActivityMenuBinding::infl
         val contentLayout = binding.menuActivityContentLayout
         contentLayout.menuActivityMenuName.text = infoList[0].menuName
         contentLayout.menuActivityMenuDetail.text = infoList[0].menuDetail
-        contentLayout.menuActivityMenuPrice.text = infoList[0].menuPrice.toString() + "원"
+        contentLayout.menuActivityMenuPrice.text = infoList[0].menuPrice.toString()
         contentLayout.menuActivityMenuAmount.text = menuAmount.toString()
+        price = infoList[0].menuPrice
 
         contentLayout.menuActivityAddCount.setOnClickListener {
+            val currentPrice = contentLayout.menuActivityMenuPrice.text.toString().toInt()
+            contentLayout.menuActivityMenuPrice.text = (currentPrice + (currentPrice / menuAmount)).toString()
             menuAmount++
             contentLayout.menuActivityMenuAmount.text = menuAmount.toString()
-            contentLayout.menuActivityMenuPrice.text = (menuAmount * infoList[0].menuPrice).toString() + "원"
         }
+
         contentLayout.menuActivityRemoveCount.setOnClickListener {
             if(menuAmount > 1) {
+                val currentPrice = contentLayout.menuActivityMenuPrice.text.toString().toInt()
+                contentLayout.menuActivityMenuPrice.text = (currentPrice - (currentPrice / menuAmount)).toString()
                 menuAmount--
                 contentLayout.menuActivityMenuAmount.text = menuAmount.toString()
-                contentLayout.menuActivityMenuPrice.text = (menuAmount * infoList[0].menuPrice).toString() + "원"
             }
         }
     }
@@ -142,6 +200,14 @@ class MenuActivity : BaseActivity<ActivityMenuBinding>(ActivityMenuBinding::infl
 
     override fun onGetSpecificMenuFailure(message: String) {
         showCustomToast("오류 : $message")
+        Log.d("오류", message)
+    }
+
+    override fun onPostAddingCartSuccess(response: AddingCartResponse) {
+        Log.d(TAG, response.message)
+    }
+
+    override fun onPostAddingCartFailure(message: String) {
         Log.d("오류", message)
     }
 

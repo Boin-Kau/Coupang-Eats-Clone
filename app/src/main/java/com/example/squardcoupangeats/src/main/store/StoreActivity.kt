@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.BaseActivity
 import com.example.squardcoupangeats.databinding.ActivityStoreBinding
+import com.example.squardcoupangeats.src.main.cart.CartActivity
 import com.example.squardcoupangeats.src.main.menu.MenuActivity
 import com.example.squardcoupangeats.src.main.store.adapter.StoreMenuCategoryAdapter
 import com.example.squardcoupangeats.src.main.store.adapter.StoreReviewAdapter
@@ -22,6 +23,7 @@ import com.example.squardcoupangeats.src.main.store.adapter.StoreTopImageAdapter
 import com.example.squardcoupangeats.src.main.store.models.*
 import com.example.squardcoupangeats.src.main.store.service.StoreActivityView
 import com.example.squardcoupangeats.src.main.store.service.StoreService
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_store.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -44,6 +46,15 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
             StoreService(this).tryGetSpecificStores(storeIndex)
         }
 
+        if(intent.hasExtra("cart")) {
+            val price = intent.getIntExtra("cart", -1)
+            if(price != -1) {
+                binding.storeActivityShowCartBtn.visibility = View.VISIBLE
+                binding.menuActivityAddCartTotalPayment.text = price.toString() + "원"
+                Snackbar.make(binding.storeActivityLayout, "메뉴가 담겼습니다.", Snackbar.LENGTH_SHORT).show()
+            }
+        }
+
         this.window.apply {
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             statusBarColor = Color.TRANSPARENT
@@ -54,6 +65,10 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white)
         supportActionBar!!.title = ""
+
+        binding.storeActivityShowCartBtn.setOnClickListener {
+            startActivity(Intent(this, CartActivity::class.java))
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

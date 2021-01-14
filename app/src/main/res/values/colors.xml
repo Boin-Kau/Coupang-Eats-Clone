@@ -19,4 +19,5 @@
     <color name="star_color">#f4c700</color>
     <color name="non_star_color">#b2b2b2</color>
     <color name="gray_text_color">#929eaa</color>
+    <color name="cart_activity_coupon_text_color">#FF8626</color>
 </resources>

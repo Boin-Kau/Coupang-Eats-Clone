@@ -68,6 +68,9 @@ class ApplicationClass : Application() {
         // 카카오 키워드로 주소 검색 native key
         const val KAKAO_REST_API_APP_KEY = "4f2bb9746ab758b7442d9739900da43d"
 
+        // 부트페이 Application ID
+        const val BOOT_PAY_APPLICATION_ID = "600015b55b294800202a1c03"
+
         // 로그인 상태 확인 flag
         var loginFlag : Int = 0
 

@@ -31,5 +31,6 @@ data class ResultOptCategoryMenu(
 data class OptMenuListData(
     @SerializedName("menuOptIdx") val menuOptIdx : Int,
     @SerializedName("menuOptName") val menuOptName : String,
+    @SerializedName("menuOptPrice") val menuOptPrice : String,
     @SerializedName("optPrice") val optPrice : Int
 )

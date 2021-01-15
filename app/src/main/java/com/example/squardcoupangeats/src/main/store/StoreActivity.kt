@@ -50,7 +50,7 @@ class StoreActivity : BaseActivity<ActivityStoreBinding>(ActivityStoreBinding::i
             val price = intent.getIntExtra("cart", -1)
             if(price != -1) {
                 binding.storeActivityShowCartBtn.visibility = View.VISIBLE
-                binding.menuActivityAddCartTotalPayment.text = price.toString() + "원"
+//                binding.menuActivityAddCartTotalPayment.text = price.toString() + "원"
                 Snackbar.make(binding.storeActivityLayout, "메뉴가 담겼습니다.", Snackbar.LENGTH_SHORT).show()
             }
         }

@@ -50,7 +50,6 @@ class FavoriteActivity : BaseActivity<ActivityFavoriteBinding>(ActivityFavoriteB
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_favorite_activity_toolbar_update_btn -> {
-                showCustomToast("update")
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -26,6 +26,8 @@ class ApplicationClass : Application() {
 
     // 카카오 키워드로 주소 검색 api URL
     val KAKAO_BASE_URL = "https://dapi.kakao.com/"
+    // 네이버 ReverseGeocording api URL
+    val NAVER_BASE_URL = "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/"
 
     // 코틀린의 전역변수 문법
     companion object {
@@ -38,7 +40,10 @@ class ApplicationClass : Application() {
         // Retrofit 인스턴스, 앱 실행시 한번만 생성하여 사용합니다.
         lateinit var sRetrofit: Retrofit
 
-        //
+        // 카카오 주소 검색
+        lateinit var kakaoGeoRetrofit: Retrofit
+
+        // 네이버 Reverse Geocording 사용
         lateinit var naverGeoRetrofit: Retrofit
 
         // 카테고리 이미지 리스트(임시)
@@ -118,10 +123,14 @@ class ApplicationClass : Application() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        naverGeoRetrofit = Retrofit.Builder()
+        kakaoGeoRetrofit = Retrofit.Builder()
                 .baseUrl(KAKAO_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-    }
 
+        naverGeoRetrofit = Retrofit.Builder()
+            .baseUrl(NAVER_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
 }

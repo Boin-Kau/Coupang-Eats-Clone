@@ -1,10 +1,8 @@
 package com.example.squardcoupangeats.src.main.myEats
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import com.example.squardcoupangeats.R
 import com.example.squardcoupangeats.config.BaseFragment
 import com.example.squardcoupangeats.databinding.FragmentMyEatsBinding
@@ -17,6 +15,10 @@ class MyEatsFragment : BaseFragment<FragmentMyEatsBinding>(FragmentMyEatsBinding
         super.onViewCreated(view, savedInstanceState)
 
         setUserInfo()
+
+        binding.myEatsFragSettingBtn.setOnClickListener {
+            activity!!.startActivity(Intent(activity, SettingActivity::class.java))
+        }
     }
 
 

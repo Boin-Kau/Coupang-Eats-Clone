@@ -28,20 +28,44 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/gray_text_color"
             android:text="@string/login_tv_request_sub_title"
             android:layout_marginTop="15dp"/>
 
-        <ImageView
-            android:id="@+id/login_dialog_kakao_login_btn"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/login_dialog_kakao_login_btn"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/kakao_login_large_wide"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"/>
+
+            <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+                android:scaleType="fitXY"
+                android:id="@+id/login_dialog_naver_login_btn"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/kakao_login_large_wide"
-            android:layout_marginTop="15dp"/>
-
-        <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
-            android:id="@+id/login_dialog_naver_login_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp" />
+            android:layout_gravity="center"
+            android:textColor="@color/gray_text_color"
+            android:gravity="center"
+            android:textSize="10sp"
+            android:text="@string/login_tv_long_tv"/>
 
     </LinearLayout>
 

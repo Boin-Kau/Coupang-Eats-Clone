@@ -32,6 +32,9 @@
     <!-- Login -->
     <string name="login_tv_request_title">로그인이 필요합니다.</string>
     <string name="login_tv_request_sub_title">로그인 후 맛있는 음식을 빠르게 즐겨보세요.</string>
+    <string name="login_tv_long_tv">로그인하여 쿠팡이츠 서비스 이용약관, 위치기반서비스 이용약관, 쿠팡페이 서비스 이용약관,\n
+        쿠팡페이 전자금융거래약관, 쿠팡페이 개인정보수집이용, 쿠팡페이 개인정보제공에\n
+        동의합니다.</string>
 
     <!-- Naver Login -->
 
@@ -74,5 +77,8 @@
         정보, 상품의 품질 및 거래에 대해서 일체의 책임을 지지 않습니다. 회원은 주문\n
         내용을 확인하였고, 결제에 동의합니다.
     </string>
+
+    <!-- Cart -->
+    <string name="setting_activity_inform">쿠폰&amp;혜택 정보 알림</string>
 
 </resources>

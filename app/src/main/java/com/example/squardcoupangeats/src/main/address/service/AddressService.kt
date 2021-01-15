@@ -10,7 +10,7 @@ import retrofit2.Response
 class AddressService(val view: AddressActivityView) {
 
     fun tryGetAddress(address : String, page : Int, size : Int) {
-        val addressRetrofitInterface = ApplicationClass.naverGeoRetrofit.create(AddressRetrofitInterface::class.java)
+        val addressRetrofitInterface = ApplicationClass.kakaoGeoRetrofit.create(AddressRetrofitInterface::class.java)
         addressRetrofitInterface.getAddress("KakaoAK "+ KAKAO_REST_API_APP_KEY, address, page, size
         ).enqueue(object : Callback<AddressSearchResponse>{
             override fun onResponse(call: Call<AddressSearchResponse>, response: Response<AddressSearchResponse>) {

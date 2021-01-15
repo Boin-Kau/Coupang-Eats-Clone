@@ -32,8 +32,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/address_gps_button_tv"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_marginStart="18dp"/>
+                android:layout_marginStart="15dp"/>
 
         </LinearLayout>
 

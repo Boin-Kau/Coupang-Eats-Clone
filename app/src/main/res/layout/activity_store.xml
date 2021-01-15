@@ -320,14 +320,14 @@
             android:id="@+id/menu_activity_add_cart_total_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="총 주문금액"
+            android:text="21500원"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="10dp"/>
+            android:layout_marginEnd="15dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

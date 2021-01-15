@@ -39,6 +39,13 @@ class NaverMapActivity : BaseActivity<ActivityNaverMapBinding>(ActivityNaverMapB
             }
 
         mapFragment.getMapAsync(this)
+
+        val lat = 37.614578
+        val lon = 126.835075
+        val placeName ="행신동리치빌1차"
+        val placeAddress = "경기도 고양시 덕양구 용현로5번길 50"
+        binding.naverMapPlaceName.text = placeName
+        binding.naverMapPlaceAddress.text = placeAddress
     }
 
     override fun onMapReady(naverMap: NaverMap) {
